@@ -637,6 +637,20 @@ section[id] {
   font-weight: 700;
   text-align: center;
 }
+.cerror {
+  margin-top: 14px;
+  color: var(--plum);
+  font-weight: 700;
+  text-align: center;
+}
+.hp {
+  position: absolute;
+  left: -9999px;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
 .cnote {
   margin-top: 14px;
   font-size: 13px;

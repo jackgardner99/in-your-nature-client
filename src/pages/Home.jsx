@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import Footer from '../components/Footer.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Testimonials from '../components/Testimonials.jsx'
+import { FORMSPREE_ENDPOINT } from '../data/site.js'
 
 const flow = [
   {
@@ -15,7 +16,7 @@ const flow = [
   },
   {
     title: 'It translates to your life',
-    body: 'That clarity becomes real direction — work that fits you, a daily rhythm that suits you, and confident choices that finally feel like yours.',
+    body: 'That clarity becomes real direction: work that fits you, a daily rhythm that suits you, and confident choices that finally feel like yours.',
   },
 ]
 
@@ -23,17 +24,17 @@ const facets = [
   {
     key: 'who you are',
     title: 'Your core nature',
-    body: 'The temperament underneath the roles you play — how you actually operate when you\'re being yourself.',
+    body: 'The temperament underneath the roles you play, and how you actually operate when you\'re being yourself.',
   },
   {
     key: "what you're good at",
     title: 'Your secret gifts',
-    body: 'The talents you underrate because they come easily to you — the ones worth building a life around.',
+    body: 'The talents you underrate because they come easily to you, the ones worth building a life around.',
   },
   {
     key: 'how you work',
     title: 'One path, or many',
-    body: "Whether you're built to go deep on one thing or to move between several — and how to stop fighting your own wiring.",
+    body: "Whether you're built to go deep on one thing or to move between several, and how to stop fighting your own wiring.",
   },
   {
     key: 'your conditions',
@@ -43,7 +44,7 @@ const facets = [
   {
     key: 'how you refill',
     title: 'How you recharge',
-    body: 'What genuinely restores you versus what only looks like rest — so you stop running yourself empty.',
+    body: 'What genuinely restores you versus what only looks like rest, so you stop running yourself empty.',
   },
   {
     key: 'how you sense',
@@ -53,51 +54,71 @@ const facets = [
   {
     key: "where you're headed",
     title: 'Career directions',
-    body: 'The kinds of roles and work that fit your nature — and the ones that will quietly drain you no matter the pay.',
+    body: 'The kinds of roles and work that fit your nature, and the ones that will quietly drain you no matter the pay.',
   },
   {
     key: 'your growth edge',
     title: "Where you're meant to stretch",
-    body: "The direction of real growth for you this chapter — the work that's uncomfortable because it's yours to do.",
+    body: "The direction of real growth for you this chapter: the work that's uncomfortable because it's yours to do.",
   },
 ]
 
 function ContactForm() {
-  const [sent, setSent] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    const form = e.currentTarget
+    setStatus('sending')
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      })
+      if (!res.ok) throw new Error(`Formspree responded ${res.status}`)
+      form.reset()
+      setStatus('sent')
+    } catch {
+      setStatus('error')
+    }
+  }
 
   return (
-    <form
-      className="cform"
-      onSubmit={(e) => {
-        e.preventDefault()
-        setSent(true)
-      }}
-    >
+    <form className="cform" onSubmit={handleSubmit}>
       <div className="cfield">
         <label htmlFor="contact-name">Your name</label>
-        <input id="contact-name" type="text" placeholder="First name" />
+        <input id="contact-name" name="name" type="text" placeholder="First name" />
       </div>
       <div className="cfield">
         <label htmlFor="contact-email">Email</label>
-        <input id="contact-email" type="email" placeholder="you@email.com" />
+        <input id="contact-email" name="email" type="email" placeholder="you@email.com" required />
       </div>
       <div className="cfield">
         <label htmlFor="contact-message">Where are you right now?</label>
         <textarea
           id="contact-message"
+          name="message"
           placeholder="What's on your mind, or what you're hoping to figure out..."
         />
       </div>
-      <button type="submit" className="btn btn-solid">
-        Request my free call
+      {/* honeypot: hidden from people, filled in by spam bots */}
+      <input className="hp" type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+      <button type="submit" className="btn btn-solid" disabled={status === 'sending'}>
+        {status === 'sending' ? 'Sending…' : 'Submit Form'}
       </button>
-      {sent && (
-        <p className="cdone">
-          Thank you — this is a demo form. On the live site, your note would reach me here.
+      {status === 'sent' && (
+        <p className="cdone" role="status">
+          Thank you! Your message is on its way. I&apos;ll be in touch soon.
+        </p>
+      )}
+      {status === 'error' && (
+        <p className="cerror" role="alert">
+          Something went wrong sending your message. Please try again.
         </p>
       )}
       <p className="cnote">
-        In Your Nature offers coaching and personal development — not licensed therapy or medical,
+        In Your Nature offers coaching and personal development, not licensed therapy or medical,
         legal, or financial advice.
       </p>
     </form>
@@ -121,11 +142,11 @@ function Home() {
               There&apos;s more for you.<span className="whisper">and it starts with knowing yourself.</span>
             </h1>
             <p className="lead">
-              If you feel stuck or drained, quietly sensing you&apos;re meant for more — or you just
-              need help putting your own gifts into words — you&apos;re in the right place. I help
+              If you feel stuck or drained, quietly sensing you&apos;re meant for more, or you just
+              need help putting your own gifts into words, you&apos;re in the right place. I help
               you map how you&apos;re actually wired: your gifts, your natural rhythm, the
               environments where you come alive. I know how much it matters, because finding this
-              for myself is what pulled me out of years in work that slowly emptied me — and into a
+              for myself is what pulled me out of years in work that slowly emptied me, and into a
               life that finally feels like mine.
             </p>
             <div className="hero-cta">
@@ -137,7 +158,7 @@ function Home() {
               </Link>
             </div>
             <p className="hero-fine">
-              Map your gifts, your rhythm, and where you belong —{' '}
+              Map your gifts, your rhythm, and where you belong, {' '}
               <b>and turn that clarity into a life that fits you.</b>
             </p>
           </div>
@@ -149,10 +170,10 @@ function Home() {
         <div className="wrap">
           <div className="cred-note">
             <p>
-              I spent years unhappy in work that wasn&apos;t right for me — going through the
+              I spent years unhappy in work that wasn&apos;t right for me, going through the
               motions, wondering if that heaviness was just what adulthood felt like. It
-              wasn&apos;t. When I finally dug into understanding myself — my real gifts, what
-              actually fit me — everything shifted. Knowing myself gave me the clarity to say no
+              wasn&apos;t. When I finally dug into understanding myself, my real gifts, what
+              actually fit me, everything shifted. Knowing myself gave me the clarity to say no
               to what wasn&apos;t mine, which made room for what was. That&apos;s the work I do
               with people now, and it comes from a background in consulting and coaching, helping
               people get clear on their vision, find work that suits them, and grow into who
@@ -170,7 +191,7 @@ function Home() {
             <h2>Understand yourself first. Everything else follows.</h2>
             <p>
               The clearer you are on who you are, the more naturally the right things fall into
-              place — the career that fits, the way you want to live your days, the decisions that
+              place: the career that fits, the way you want to live your days, the decisions that
               used to feel hard.
             </p>
           </div>
@@ -191,7 +212,7 @@ function Home() {
           <div className="sec-head">
             <span className="eyebrow">Your Blueprint</span>
             <h2>
-              The clearest picture of yourself you&apos;ve ever had — and the foundation for
+              The clearest picture of yourself you&apos;ve ever had, and the foundation for
               everything after.
             </h2>
             <p>
@@ -213,14 +234,14 @@ function Home() {
               <h3>What drains you &amp; what to avoid</h3>
               <p>
                 Most reads only tell you the bright side. Yours also names the patterns,
-                environments, and choices that don&apos;t fit you — what quietly wears you down,
+                environments, and choices that don&apos;t fit you: what quietly wears you down,
                 what you won&apos;t enjoy, and what to stop forcing. Knowing what isn&apos;t yours
                 is half of finding what is.
               </p>
             </Reveal>
           </div>
           <p className="blue-note">
-            The frameworks behind it are time-tested and personal — but you never have to learn
+            The frameworks behind it are time-tested and personal, but you never have to learn
             any of them. I translate all of it into plain language about you.
           </p>
         </div>
@@ -232,11 +253,11 @@ function Home() {
           <span className="eyebrow">Why this works</span>
           <h2>Clarity isn&apos;t a personality label. It&apos;s permission.</h2>
           <p>
-            Most people already sense who they are — they&apos;ve just been talked out of it. When
+            Most people already sense who they are, they&apos;ve just been talked out of it. When
             you can finally see your own wiring laid out clearly, the pressure to be someone else
             drops, and the right next steps get obvious: the career that fits, the way you want
             your days to feel, the decisions that used to keep you stuck. That&apos;s the whole
-            point — not a report you file away, but a life that starts to feel like yours.
+            point, not a report you file away, but a life that starts to feel like yours.
           </p>
           <div className="dusk-cta">
             <Link to="/#contact" className="btn btn-solid">
@@ -254,7 +275,7 @@ function Home() {
             <h2>Where to begin.</h2>
             <p>
               Everything starts with a free conversation. Most people begin with the Blueprint,
-              because knowing yourself first makes the coaching that follows far more powerful —
+              because knowing yourself first makes the coaching that follows far more powerful,
               but you can dive straight into a specific goal too. Whatever fits you.
             </p>
           </div>
@@ -283,7 +304,7 @@ function Home() {
               <h3>Coaching sessions</h3>
               <p>
                 Turn self-understanding into real direction. Once you know your gifts and
-                strengths, we work on the things that move your life forward — grounded in who you
+                strengths, we work on the things that move your life forward, grounded in who you
                 actually are, not generic advice. Start here on its own, or continue after your
                 Blueprint.
               </p>
@@ -319,7 +340,7 @@ function Home() {
             <h2>Book your free intro call.</h2>
             <p>
               Tell me a little about where you are and what you&apos;re hoping for. No pressure,
-              no pitch — just a real conversation to see if this is a fit.
+              no pitch, just a real conversation to see if this is a fit.
             </p>
           </div>
           <ContactForm />
@@ -327,7 +348,7 @@ function Home() {
       </section>
 
       <Footer heading="You don't need to become someone new.">
-        You need to see who you already are — and build a life around it. Let&apos;s start.
+        You need to see who you already are, and build a life around it. Let&apos;s start.
       </Footer>
     </>
   )
