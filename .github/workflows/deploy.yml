@@ -28,10 +28,9 @@ jobs:
       - run: npm ci
       - run: npm run lint
 
+      # Custom domain (getinyournature.com) is served from the root, so the
+      # default base of '/' in vite.config.js applies.
       - run: npm run build
-        env:
-          # Project sites are served from /<repo-name>/
-          VITE_BASE: /${{ github.event.repository.name }}/
 
       # Pages has no SPA fallback: serving index.html as 404.html lets
       # deep links like /about load the app and let the router take over.
