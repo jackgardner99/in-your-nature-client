@@ -115,30 +115,32 @@ function Home() {
           <span className="orb orb-grad2"></span>
         </div>
         <div className="wrap hero-in">
-          <span className="eyebrow">Coaching &amp; personal development</span>
-          <h1>
-            There&apos;s more for you.<span className="whisper">and it starts with knowing yourself.</span>
-          </h1>
-          <p className="lead">
-            If you feel stuck or drained, quietly sensing you&apos;re meant for more — or you just
-            need help putting your own gifts into words — you&apos;re in the right place. I help
-            you map how you&apos;re actually wired: your gifts, your natural rhythm, the
-            environments where you come alive. I know how much it matters, because finding this
-            for myself is what pulled me out of years in work that slowly emptied me — and into a
-            life that finally feels like mine.
-          </p>
-          <div className="hero-cta">
-            <Link to="/#contact" className="btn btn-solid">
-              Book a free intro call
-            </Link>
-            <Link to="/#work" className="btn btn-ghost">
-              See how I can help
-            </Link>
+          <div className="hero-copy">
+            <span className="eyebrow">Coaching &amp; personal development</span>
+            <h1>
+              There&apos;s more for you.<span className="whisper">and it starts with knowing yourself.</span>
+            </h1>
+            <p className="lead">
+              If you feel stuck or drained, quietly sensing you&apos;re meant for more — or you just
+              need help putting your own gifts into words — you&apos;re in the right place. I help
+              you map how you&apos;re actually wired: your gifts, your natural rhythm, the
+              environments where you come alive. I know how much it matters, because finding this
+              for myself is what pulled me out of years in work that slowly emptied me — and into a
+              life that finally feels like mine.
+            </p>
+            <div className="hero-cta">
+              <Link to="/#contact" className="btn btn-solid">
+                Book a free intro call
+              </Link>
+              <Link to="/#work" className="btn btn-ghost">
+                See how I can help
+              </Link>
+            </div>
+            <p className="hero-fine">
+              Map your gifts, your rhythm, and where you belong —{' '}
+              <b>and turn that clarity into a life that fits you.</b>
+            </p>
           </div>
-          <p className="hero-fine">
-            Map your gifts, your rhythm, and where you belong —{' '}
-            <b>and turn that clarity into a life that fits you.</b>
-          </p>
         </div>
       </header>
 
