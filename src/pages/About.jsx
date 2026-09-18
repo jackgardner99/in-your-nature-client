@@ -31,16 +31,18 @@ function About() {
           <span className="orb orb-grad2"></span>
         </div>
         <div className="wrap hero-in">
-          <span className="eyebrow">About</span>
-          <h1>
-            Hi, I&apos;m Kadi.<span className="whisper">and I&apos;ve been where you are.</span>
-          </h1>
-          <p className="lead">
-            I spent years quietly unfulfilled — worn down by jobs that drained me, wondering if
-            that heaviness was just what life was supposed to feel like. It wasn&apos;t.
-            Understanding myself changed everything, and now I help other people find their way
-            there too.
-          </p>
+          <div className="hero-copy">
+            <span className="eyebrow">About</span>
+            <h1>
+              Hi, I&apos;m Kadi.<span className="whisper">and I&apos;ve been where you are.</span>
+            </h1>
+            <p className="lead">
+              I spent years quietly unfulfilled — worn down by jobs that drained me, wondering if
+              that heaviness was just what life was supposed to feel like. It wasn&apos;t.
+              Understanding myself changed everything, and now I help other people find their way
+              there too.
+            </p>
+          </div>
         </div>
       </header>
 

@@ -255,7 +255,9 @@ nav {
 }
 .hero-in {
   position: relative;
-  padding: 82px 0 66px;
+  padding-block: 82px 66px;
+}
+.hero-copy {
   max-width: 760px;
 }
 .hero h1 {
@@ -726,7 +728,7 @@ footer .foot-fine {
     padding: 6px 20px 22px;
   }
   .hero-in {
-    padding: 52px 0 44px;
+    padding-block: 52px 44px;
   }
   .hero .lead {
     font-size: 18px;
