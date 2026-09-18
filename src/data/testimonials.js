@@ -7,6 +7,6 @@ export const testimonials = [
   {
     name: 'Avery',
     quote:
-      "Kadi has a true gift for noticing people's natural strengths and helping them bring those into their real life. You leave every conversation with her feeling more like yourself.",
+      "Kadi has a true gift for noticing your natural strengths and helping you bring those into your real life. You leave every conversation with her feeling more like yourself.",
   },
 ]
