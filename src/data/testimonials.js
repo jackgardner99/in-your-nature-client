@@ -2,11 +2,11 @@ export const testimonials = [
   {
     name: 'Hülya',
     quote:
-      "I was struggling to find community and my place, and working with Kadi turned that around. Her positive energy, warmth, and mentorship meant the world — I came away feeling like I'd found my footing and could see the best version of myself.",
+      "I was stuck and unsure of myself before I started working with Kadi. She helped me understand my natural rhythm and the environments where I do my best, so my gifts could actually shine. I came away understanding myself, and with a confidence I hadn't had before. I highly recommend working with Kadi!",
   },
   {
     name: 'Avery',
     quote:
-      "Kadi naturally coaches everyone around her into the best version of themselves. It's just who she is — you leave every conversation with her feeling clearer and more like yourself.",
+      "Kadi has a true gift for noticing people's natural strengths and helping them bring those into their real life. You leave every conversation with her feeling more like yourself.",
   },
 ]
