@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
 import Footer from '../components/Footer.jsx'
+import Quiz from '../components/Quiz.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Testimonials from '../components/Testimonials.jsx'
 import { FORMSPREE_ENDPOINT } from '../data/site.js'
@@ -60,6 +61,11 @@ const facets = [
     key: 'your growth edge',
     title: "Where you're meant to stretch",
     body: "The direction of real growth for you this chapter: the work that's uncomfortable because it's yours to do.",
+  },
+  {
+    key: 'the honest part',
+    title: 'What drains you & what to avoid',
+    body: "The patterns, environments, and choices that don't fit you: what quietly wears you down, and what to stop forcing. Knowing what isn't yours is half of finding what is.",
   },
 ]
 
@@ -139,7 +145,8 @@ function Home() {
           <div className="hero-copy">
             <span className="eyebrow">Coaching &amp; personal development</span>
             <h1>
-              There&apos;s more for you.<span className="whisper">and it starts with knowing yourself.</span>
+              You already sense there&apos;s more.
+              <span className="whisper">let&apos;s find it, together.</span>
             </h1>
             <p className="lead">
               If you feel stuck or drained, quietly sensing you&apos;re meant for more, or you just
@@ -161,6 +168,10 @@ function Home() {
               Map your gifts, your rhythm, and where you belong, {' '}
               <b>and turn that clarity into a life that fits you.</b>
             </p>
+            <p className="hero-proof">
+              &ldquo;Kadi has a true gift for noticing people&apos;s natural strengths and helping
+              them bring those into their real life.&rdquo; <span>— Avery</span>
+            </p>
           </div>
         </div>
       </header>
@@ -172,7 +183,7 @@ function Home() {
             <p>
               I spent years unhappy in work that wasn&apos;t right for me, going through the
               motions, wondering if that heaviness was just what adulthood felt like. It
-              wasn&apos;t. When I finally dug into understanding myself, my real gifts, what
+              wasn&apos;t. When I finally dug into understanding myself, my real gifts and what
               actually fit me, everything shifted. Knowing myself gave me the clarity to say no
               to what wasn&apos;t mine, which made room for what was. That&apos;s the work I do
               with people now, and it comes from a background in consulting and coaching, helping
@@ -229,21 +240,27 @@ function Home() {
                 <p>{body}</p>
               </Reveal>
             ))}
-            <Reveal className="facet wide">
-              <div className="fk">the honest part</div>
-              <h3>What drains you &amp; what to avoid</h3>
-              <p>
-                Most reads only tell you the bright side. Yours also names the patterns,
-                environments, and choices that don&apos;t fit you: what quietly wears you down,
-                what you won&apos;t enjoy, and what to stop forcing. Knowing what isn&apos;t yours
-                is half of finding what is.
-              </p>
-            </Reveal>
           </div>
           <p className="blue-note">
             The frameworks behind it are time-tested and personal, but you never have to learn
             any of them. I translate all of it into plain language about you.
           </p>
+        </div>
+      </section>
+
+      {/* interactive quiz */}
+      <section className="sec quiz-band" id="quiz">
+        <div className="wrap">
+          <div className="sec-head">
+            <span className="eyebrow">Find your starting point</span>
+            <h2>Where are you right now?</h2>
+            <p>
+              Answer a few honest questions about where you are, and I&apos;ll send you a
+              personalized read, plus the exact next step I&apos;d recommend for you. It takes
+              about a minute.
+            </p>
+          </div>
+          <Quiz />
         </div>
       </section>
 
@@ -253,11 +270,11 @@ function Home() {
           <span className="eyebrow">Why this works</span>
           <h2>Clarity isn&apos;t a personality label. It&apos;s permission.</h2>
           <p>
-            Most people already sense who they are, they&apos;ve just been talked out of it. When
+            Most people already sense who they are. They&apos;ve just been talked out of it. When
             you can finally see your own wiring laid out clearly, the pressure to be someone else
             drops, and the right next steps get obvious: the career that fits, the way you want
             your days to feel, the decisions that used to keep you stuck. That&apos;s the whole
-            point, not a report you file away, but a life that starts to feel like yours.
+            point. Not a report you file away, but a life that starts to feel like yours.
           </p>
           <div className="dusk-cta">
             <Link to="/#contact" className="btn btn-solid">
@@ -271,53 +288,125 @@ function Home() {
       <section className="sec" id="work">
         <div className="wrap">
           <div className="sec-head">
-            <span className="eyebrow">Work with me</span>
-            <h2>Where to begin.</h2>
+            <span className="eyebrow">Ways to work together</span>
+            <h2>Three paths. The same clear start.</h2>
             <p>
-              Everything starts with a free conversation. Most people begin with the Blueprint,
-              because knowing yourself first makes the coaching that follows far more powerful,
-              but you can dive straight into a specific goal too. Whatever fits you.
+              Every path begins with understanding yourself, and the same free conversation. What
+              changes is how much support you want after that: none, a few months, or the whole
+              way through. Each is one clear price, pay in full or in installments.
             </p>
           </div>
-          <div className="offer">
-            <Reveal className="ocard signature">
-              <div className="otag">the best place to start</div>
-              <h3>Your Blueprint</h3>
-              <p>
-                A personalized read on who you are — your gifts, strengths, and the environments
-                you thrive in — delivered as a clear written report and walked through together.
-                It&apos;s the foundation that makes every career and life decision after it
-                sharper.
+
+          <div className="tiers">
+            <Reveal className="tier">
+              <div className="tier-name">The Blueprint</div>
+              <div className="tier-for">Know yourself</div>
+              <div className="tier-anchor">Value $2,000</div>
+              <div className="tier-price">$500</div>
+              <div className="tier-pay">Pay in full or in installments</div>
+              <p className="tier-desc">
+                The foundation, years in the making. A clear, personalized read on who you really
+                are, walked through together.
               </p>
               <ul>
                 <li>Free intro conversation first</li>
-                <li>Your full Blueprint across every facet</li>
-                <li>A live walkthrough session to make it real</li>
-                <li>Plain-language, keep-forever report</li>
+                <li>Your full personalized Blueprint</li>
+                <li>One live walkthrough session with me</li>
+                <li>Keep-forever report</li>
               </ul>
-              <div className="price">
-                Pricing tailored to you — we&apos;ll talk it through on our call
-              </div>
+              <p className="tier-upgrade">
+                Want more support? Your $500 credits toward Clarity or Deep Transformation if you
+                upgrade within 30 days.
+              </p>
+              <Link to="/#contact" className="btn btn-ghost tier-cta">
+                Start here
+              </Link>
             </Reveal>
-            <Reveal className="ocard">
-              <div className="otag">put it to work</div>
-              <h3>Coaching sessions</h3>
-              <p>
-                Turn self-understanding into real direction. Once you know your gifts and
-                strengths, we work on the things that move your life forward, grounded in who you
-                actually are, not generic advice. Start here on its own, or continue after your
-                Blueprint.
+
+            <Reveal className="tier feature">
+              <div className="tier-badge">★ Most people start here</div>
+              <div className="tier-name">The Clarity Program</div>
+              <div className="tier-for">Live it, in the areas that matter most</div>
+              <div className="tier-anchor">Value $4,500</div>
+              <div className="tier-price">$1,500</div>
+              <div className="tier-pay">Pay in full or in installments</div>
+              <p className="tier-desc">
+                Everything in the Blueprint, plus four months of coaching to actually live as
+                yourself, in your days, your relationships, and your direction.
               </p>
               <ul>
-                <li>Finding the career and roles that truly fit you</li>
-                <li>Shaping a daily routine and pace that suit you</li>
-                <li>Interviews and communicating your strengths</li>
-                <li>Confidence, presence &amp; public speaking</li>
-                <li>Ongoing coaching toward your goals</li>
+                <li>
+                  <b>Everything in The Blueprint</b>
+                </li>
+                <li>4 months of monthly coaching</li>
+                <li>
+                  <b>Your days:</b> a routine, rhythm &amp; rest that fit you
+                </li>
+                <li>
+                  <b>Your relationships:</b> love, friendship, family &amp; conflict
+                </li>
+                <li>
+                  <b>Your direction:</b> career and life guidance toward what fits
+                </li>
+                <li>
+                  <b>Your environments:</b> the settings &amp; people where you thrive
+                </li>
+                <li>Your core toolkit: daily-response &amp; rhythm tools</li>
+                <li>Between-session email support</li>
               </ul>
-              <div className="price">Single sessions or packages — tailored to you</div>
+              <Link to="/#contact" className="btn btn-solid tier-cta">
+                Book a free intro call
+              </Link>
+            </Reveal>
+
+            <Reveal className="tier highlight-deep">
+              <div className="tier-badge tier-badge-plum">◆ The most support &amp; depth</div>
+              <div className="tier-name">Deep Transformation</div>
+              <div className="tier-for">Rebuild your whole life around it</div>
+              <div className="tier-anchor">Value $8,000</div>
+              <div className="tier-price">$3,000</div>
+              <div className="tier-pay">Pay in full or in installments</div>
+              <p className="tier-desc">
+                Everything in Clarity and more, over a full six months, with the most access to me
+                and the deepest work across every part of your life.
+              </p>
+              <ul>
+                <li>
+                  <b>Everything in The Clarity Program</b>
+                </li>
+                <li>6 months of coaching, more frequent sessions</li>
+                <li>
+                  <b>Every life area, deeper:</b> plus intuition, boundaries &amp; decision-making
+                </li>
+                <li>
+                  <b>Full career support:</b> résumé, interview prep, positioning &amp; strategy
+                </li>
+                <li>
+                  <b>Deeper inner work:</b> journaling &amp; reflection practices
+                </li>
+                <li>
+                  <b>Your foundations:</b> energy, sleep &amp; daily habits
+                </li>
+                <li>The complete resource library: every worksheet &amp; guide</li>
+                <li>Priority access + accountability check-ins</li>
+                <li>A living Blueprint that evolves as you grow, plus a plan to keep going</li>
+              </ul>
+              <Link to="/#contact" className="btn btn-ghost tier-cta">
+                Start here
+              </Link>
             </Reveal>
           </div>
+
+          <div className="brand-guarantee">
+            <b>My promise, on every path:</b> I&apos;m committed to your clarity. If you
+            don&apos;t feel it after your first session, we&apos;ll keep working until you do, at
+            no extra cost. I won&apos;t leave you without what you came for.
+          </div>
+
+          <p className="tiers-note">
+            Not sure which fits? Take the quiz above, or just book a free call and we&apos;ll
+            figure it out together.
+          </p>
         </div>
       </section>
 
@@ -340,7 +429,10 @@ function Home() {
             <h2>Book your free intro call.</h2>
             <p>
               Tell me a little about where you are and what you&apos;re hoping for. No pressure,
-              no pitch, just a real conversation to see if this is a fit.
+              no pitch, just a real conversation to see if this is a fit. I work with a limited
+              number of people at a time, so we can go deep, and every path comes with my promise:
+              if you don&apos;t feel real clarity after your first session, we&apos;ll keep
+              working until you do, at no extra cost.
             </p>
           </div>
           <ContactForm />
