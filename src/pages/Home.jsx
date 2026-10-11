@@ -293,7 +293,8 @@ function Home() {
             <p>
               Every path begins with understanding yourself, and the same free conversation. What
               changes is how much support you want after that: none, a few months, or the whole
-              way through. Each is one clear price, pay in full or in installments.
+              way through. Each is one clear price, and Clarity and Deep Transformation can be
+              paid in installments.
             </p>
           </div>
 
@@ -301,9 +302,9 @@ function Home() {
             <Reveal className="tier">
               <div className="tier-name">The Blueprint</div>
               <div className="tier-for">Know yourself</div>
-              <div className="tier-anchor">Value $2,000</div>
+              <div className="tier-anchor">Valued at $2,000</div>
               <div className="tier-price">$500</div>
-              <div className="tier-pay">Pay in full or in installments</div>
+              <div className="tier-pay">Paid in full</div>
               <p className="tier-desc">
                 The foundation, years in the making. A clear, personalized read on who you really
                 are, walked through together.
@@ -327,7 +328,7 @@ function Home() {
               <div className="tier-badge">★ Most people start here</div>
               <div className="tier-name">The Clarity Program</div>
               <div className="tier-for">Live it, in the areas that matter most</div>
-              <div className="tier-anchor">Value $4,500</div>
+              <div className="tier-anchor">Valued at $4,500</div>
               <div className="tier-price">$1,500</div>
               <div className="tier-pay">Pay in full or in installments</div>
               <p className="tier-desc">
@@ -338,7 +339,7 @@ function Home() {
                 <li>
                   <b>Everything in The Blueprint</b>
                 </li>
-                <li>4 months of monthly coaching</li>
+                <li>4 months of coaching, every two weeks</li>
                 <li>
                   <b>Your days:</b> a routine, rhythm &amp; rest that fit you
                 </li>
@@ -352,6 +353,7 @@ function Home() {
                   <b>Your environments:</b> the settings &amp; people where you thrive
                 </li>
                 <li>Your core toolkit: daily-response &amp; rhythm tools</li>
+                <li>Journaling prompts written around your Blueprint</li>
                 <li>Between-session email support</li>
               </ul>
               <Link to="/#contact" className="btn btn-solid tier-cta">
@@ -363,8 +365,8 @@ function Home() {
               <div className="tier-badge tier-badge-plum">◆ The most support &amp; depth</div>
               <div className="tier-name">Deep Transformation</div>
               <div className="tier-for">Rebuild your whole life around it</div>
-              <div className="tier-anchor">Value $8,000</div>
-              <div className="tier-price">$3,000</div>
+              <div className="tier-anchor">Valued at $8,000</div>
+              <div className="tier-price">$4,500</div>
               <div className="tier-pay">Pay in full or in installments</div>
               <p className="tier-desc">
                 Everything in Clarity and more, over a full six months, with the most access to me
@@ -399,9 +401,30 @@ function Home() {
 
           <div className="brand-guarantee">
             <b>My promise, on every path:</b> I&apos;m committed to your clarity. If you
-            don&apos;t feel it after your first session, we&apos;ll keep working until you do, at
-            no extra cost. I won&apos;t leave you without what you came for.
+            don&apos;t feel it after your first session, your next session is on me, at no extra
+            cost.
           </div>
+
+          <Reveal className="circle">
+            <div>
+              <div className="tier-name">The Circle</div>
+              <div className="tier-for">A small community, all year</div>
+              <p className="tier-desc">
+                For anyone who wants to keep growing alongside others. Each month: one live group
+                call, fresh journaling prompts, and a small, kind community of people doing this
+                same work. Open to everyone, and a gentle place to start.
+              </p>
+            </div>
+            <div className="circle-price">
+              <div className="tier-price">
+                $40<span className="price-period">/month</span>
+              </div>
+              <div className="tier-pay">Cancel anytime</div>
+              <Link to="/#contact" className="btn btn-ghost">
+                Join the Circle
+              </Link>
+            </div>
+          </Reveal>
 
           <p className="tiers-note">
             Not sure which fits? Take the quiz above, or just book a free call and we&apos;ll
