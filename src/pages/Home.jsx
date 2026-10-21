@@ -289,12 +289,11 @@ function Home() {
         <div className="wrap">
           <div className="sec-head">
             <span className="eyebrow">Ways to work together</span>
-            <h2>Three paths. The same clear start.</h2>
+            <h2>Two paths. The same clear start.</h2>
             <p>
               Every path begins with understanding yourself, and the same free conversation. What
-              changes is how much support you want after that: none, a few months, or the whole
-              way through. Each is one clear price, and Clarity and Deep Transformation can be
-              paid in installments.
+              changes is how much support you want after that: the insight on its own, or four
+              months of coaching to live it out. Pay in full or in installments.
             </p>
           </div>
 
@@ -302,12 +301,11 @@ function Home() {
             <Reveal className="tier">
               <div className="tier-name">The Blueprint</div>
               <div className="tier-for">Know yourself</div>
-              <div className="tier-anchor">Valued at $2,000</div>
               <div className="tier-price">$500</div>
               <div className="tier-pay">Paid in full</div>
               <p className="tier-desc">
-                The foundation, years in the making. A clear, personalized read on who you really
-                are, walked through together.
+                A clear, personalized read on who you really are, walked through together in a
+                live session.
               </p>
               <ul>
                 <li>Free intro conversation first</li>
@@ -316,11 +314,11 @@ function Home() {
                 <li>Keep-forever report</li>
               </ul>
               <p className="tier-upgrade">
-                Want more support? Your $500 credits toward Clarity or Deep Transformation if you
-                upgrade within 30 days.
+                Want more support? Your $500 credits toward the Clarity Program if you upgrade
+                within 30 days.
               </p>
               <Link to="/#contact" className="btn btn-ghost tier-cta">
-                Start here
+                Book a free intro call
               </Link>
             </Reveal>
 
@@ -328,9 +326,13 @@ function Home() {
               <div className="tier-badge">★ Most people start here</div>
               <div className="tier-name">The Clarity Program</div>
               <div className="tier-for">Live it, in the areas that matter most</div>
-              <div className="tier-anchor">Valued at $4,500</div>
+              {/* Founding-client promo — Jack: remove this note once the 3 spots fill */}
+              <p className="tier-founding">
+                Founding rate: $1,000 (or 4 payments of $250) for my first 3 clients, in exchange
+                for honest feedback along the way.
+              </p>
               <div className="tier-price">$1,500</div>
-              <div className="tier-pay">Pay in full or in installments</div>
+              <div className="tier-pay">Pay in full or 4 payments of $375</div>
               <p className="tier-desc">
                 Everything in the Blueprint, plus four months of coaching to actually live as
                 yourself, in your days, your relationships, and your direction.
@@ -360,50 +362,22 @@ function Home() {
                 Book a free intro call
               </Link>
             </Reveal>
-
-            <Reveal className="tier highlight-deep">
-              <div className="tier-badge tier-badge-plum">◆ The most support &amp; depth</div>
-              <div className="tier-name">Deep Transformation</div>
-              <div className="tier-for">Rebuild your whole life around it</div>
-              <div className="tier-anchor">Valued at $8,000</div>
-              <div className="tier-price">$4,500</div>
-              <div className="tier-pay">Pay in full or in installments</div>
-              <p className="tier-desc">
-                Everything in Clarity and more, over a full six months, with the most access to me
-                and the deepest work across every part of your life.
-              </p>
-              <ul>
-                <li>
-                  <b>Everything in The Clarity Program</b>
-                </li>
-                <li>6 months of coaching, more frequent sessions</li>
-                <li>
-                  <b>Every life area, deeper:</b> plus intuition, boundaries &amp; decision-making
-                </li>
-                <li>
-                  <b>Full career support:</b> résumé, interview prep, positioning &amp; strategy
-                </li>
-                <li>
-                  <b>Deeper inner work:</b> journaling &amp; reflection practices
-                </li>
-                <li>
-                  <b>Your foundations:</b> energy, sleep &amp; daily habits
-                </li>
-                <li>The complete resource library: every worksheet &amp; guide</li>
-                <li>Priority access + accountability check-ins</li>
-                <li>A living Blueprint that evolves as you grow, plus a plan to keep going</li>
-              </ul>
-              <Link to="/#contact" className="btn btn-ghost tier-cta">
-                Start here
-              </Link>
-            </Reveal>
           </div>
+
+          <p className="tiers-note">
+            Want to go even deeper? Longer-term, more intensive coaching is available by
+            invitation for Clarity clients.
+          </p>
 
           <div className="brand-guarantee">
-            <b>My promise, on every path:</b> I&apos;m committed to your clarity. If you
-            don&apos;t feel it after your first session, your next session is on me, at no extra
-            cost.
+            <b>My promise:</b> if you don&apos;t feel real clarity after your first session,
+            I&apos;ll add up to two more sessions at no extra cost.
           </div>
+
+          <p className="tiers-note">
+            Each quarter I hold a few sliding-scale spots for people who need them. Just mention
+            it on your intro call.
+          </p>
 
           <Reveal className="circle">
             <div>
@@ -454,8 +428,8 @@ function Home() {
               Tell me a little about where you are and what you&apos;re hoping for. No pressure,
               no pitch, just a real conversation to see if this is a fit. I work with a limited
               number of people at a time, so we can go deep, and every path comes with my promise:
-              if you don&apos;t feel real clarity after your first session, we&apos;ll keep
-              working until you do, at no extra cost.
+              if you don&apos;t feel real clarity after your first session, I&apos;ll add up to
+              two more sessions at no extra cost.
             </p>
           </div>
           <ContactForm />

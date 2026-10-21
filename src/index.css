@@ -607,9 +607,11 @@ section[id] {
 /* offerings: pricing tiers */
 .tiers {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   align-items: stretch;
+  max-width: 760px;
+  margin: 0 auto;
 }
 .tier {
   position: relative;
@@ -705,6 +707,16 @@ section[id] {
   color: var(--teal);
   font-weight: 700;
   font-size: 13px;
+}
+.tier-founding {
+  font-size: 12.5px;
+  color: var(--teal-deep);
+  font-style: italic;
+  background: var(--mist-2);
+  border-radius: 8px;
+  padding: 9px 12px;
+  margin-bottom: 14px;
+  line-height: 1.45;
 }
 .tier-upgrade {
   font-size: 12.5px;
