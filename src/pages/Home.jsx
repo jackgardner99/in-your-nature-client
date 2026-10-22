@@ -292,7 +292,7 @@ function Home() {
             <h2>Two paths. The same clear start.</h2>
             <p>
               Every path begins with understanding yourself, and the same free conversation. What
-              changes is how much support you want after that: the insight on its own, or four
+              changes is how much support you want after that: the insight on its own, or three
               months of coaching to live it out. Pay in full or in installments.
             </p>
           </div>
@@ -326,22 +326,16 @@ function Home() {
               <div className="tier-badge">★ Most people start here</div>
               <div className="tier-name">The Clarity Program</div>
               <div className="tier-for">Live it, in the areas that matter most</div>
-              {/* Founding-client promo — Jack: remove this note once the 3 spots fill */}
-              <p className="tier-founding">
-                Founding rate: $1,000 (or 4 payments of $250) for my first 3 clients, in exchange
-                for honest feedback along the way.
-              </p>
               <div className="tier-price">$1,500</div>
-              <div className="tier-pay">Pay in full or 4 payments of $375</div>
               <p className="tier-desc">
-                Everything in the Blueprint, plus four months of coaching to actually live as
+                Everything in the Blueprint, plus three months of coaching to actually live as
                 yourself, in your days, your relationships, and your direction.
               </p>
               <ul>
                 <li>
                   <b>Everything in The Blueprint</b>
                 </li>
-                <li>4 months of coaching, every two weeks</li>
+                <li>3 months of coaching, every two weeks</li>
                 <li>
                   <b>Your days:</b> a routine, rhythm &amp; rest that fit you
                 </li>
