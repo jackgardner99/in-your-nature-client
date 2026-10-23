@@ -1,48 +1,54 @@
 import { useState } from 'react'
+import { Link } from 'react-router'
 import { ASSESSMENT_API_URL } from '../data/site.js'
 
 const QUESTIONS = [
   {
     key: 'support_wanted',
-    q: 'How much support do you want on this journey?',
+    q: 'How much support are you looking for?',
     opts: [
-      { label: "Just the insight, I'll take it from there", score: 0 },
-      { label: 'A little guidance to get going', score: 1 },
-      { label: 'Regular coaching over a few months', score: 2 },
-      { label: 'Someone beside me the whole way through', score: 3 },
+      { label: "Mostly just clarity, once I see it I'll run with it", score: 0 },
+      { label: 'A little guidance to get me going', score: 1 },
+      { label: 'Steady coaching beside me as I put it into action', score: 2 },
     ],
   },
   {
     key: 'change_size',
-    q: "How big is the change you're facing?",
+    q: "How big is what you're navigating?",
     opts: [
       { label: 'More fine-tuning than overhaul', score: 0 },
-      { label: 'A few real decisions to get right', score: 1 },
+      { label: 'A real decision or two to get right', score: 1 },
       { label: "A significant shift I've been putting off", score: 2 },
-      { label: 'A major life or career transition', score: 3 },
-    ],
-  },
-  {
-    key: 'timeline',
-    q: 'How do you want to work through it?',
-    opts: [
-      { label: "One focused read, then I'm off", score: 0 },
-      { label: 'A quick start, then on my own', score: 1 },
-      { label: 'Steadily, with monthly check-ins', score: 2 },
-      { label: 'Over time, with ongoing accountability', score: 3 },
-    ],
-  },
-  {
-    key: 'self_starting',
-    q: "Once you're clear on your direction, you tend to...",
-    opts: [
-      { label: 'Run with it easily on my own', score: 0 },
-      { label: 'Get going with a bit of a nudge', score: 1 },
-      { label: 'Do better with regular accountability', score: 2 },
-      { label: 'Really thrive with steady, ongoing support', score: 3 },
     ],
   },
 ]
+
+// Shown once the backend confirms a recommendation — kept in sync with the
+// actual tier cards above, not reinvented here.
+const TIERS = {
+  'The Blueprint': {
+    price: '$500',
+    desc: 'A clear, personalized read on who you really are, walked through together in a live session.',
+    list: [
+      'Free intro conversation first',
+      'Your full personalized Blueprint',
+      'One live walkthrough session with me',
+      'Keep-forever report',
+      'Your $500 credits toward the Clarity Program if you upgrade within 30 days',
+    ],
+  },
+  'The Clarity Program': {
+    price: '$1,500',
+    desc: 'Everything in the Blueprint, plus three months of coaching to actually live as yourself, in your days, your relationships, and your direction.',
+    list: [
+      'Everything in The Blueprint',
+      '3 months of coaching, a session every two weeks',
+      'Your days, relationships, direction & environments',
+      'Your core toolkit: daily-response & rhythm tools',
+      'Between-session email support',
+    ],
+  },
+}
 
 function Quiz() {
   const [labels, setLabels] = useState({}) // question index -> selected option label
@@ -51,8 +57,9 @@ function Quiz() {
   const [errorMessage, setErrorMessage] = useState('')
   const [recommendedTier, setRecommendedTier] = useState(null)
 
-  const started = Object.keys(labels).length > 0
-  const allAnswered = Object.keys(labels).length === QUESTIONS.length
+  const answeredCount = Object.keys(labels).length
+  const allAnswered = answeredCount === QUESTIONS.length
+  const progressPct = Math.round((answeredCount / QUESTIONS.length) * 100)
 
   function selectOption(qi, opt) {
     setLabels((l) => ({ ...l, [qi]: opt.label }))
@@ -70,6 +77,7 @@ function Quiz() {
       name: data.get('name'),
       email: data.get('email'),
       consent: data.get('consent') === 'on',
+      situation: (data.get('situation') || '').trim(),
       answers: QUESTIONS.map((item, qi) => ({
         key: item.key,
         question: item.q,
@@ -90,89 +98,115 @@ function Quiz() {
       if (!res.ok || !result?.ok) {
         throw new Error(result?.error || `API responded ${res.status}`)
       }
-      form.reset()
       setRecommendedTier(result.recommended_tier)
       setStatus('sent')
     } catch (err) {
+      console.error('Assessment submit failed:', err)
       setErrorMessage(err.message)
       setStatus('error')
     }
   }
 
+  const tier = recommendedTier ? TIERS[recommendedTier] : null
+
   return (
-    <>
-      <div className="quiz-questions">
-        {QUESTIONS.map((item, qi) => (
-          <div className="qq" key={item.key}>
-            <div className="qq-q">
-              {qi + 1}. {item.q}
-            </div>
-            <div className="qq-opts">
-              {item.opts.map((opt) => (
-                <button
-                  key={opt.label}
-                  type="button"
-                  className={`qq-opt${labels[qi] === opt.label ? ' sel' : ''}`}
-                  onClick={() => selectOption(qi, opt)}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        ))}
+    <form className="quiz-form" onSubmit={handleSubmit}>
+      <div className="quiz-progress">
+        <div className="quiz-progress-bar" style={{ width: `${progressPct}%` }} />
       </div>
 
-      {started && (
-        <div className="capture">
-          <div className="capture-inner">
-            {status === 'sent' ? (
-              <>
-                <h3>Your starting point: {recommendedTier}</h3>
-                <p className="cdone" role="status">
-                  🌿 Thank you! I&apos;ve sent your personalized results to your inbox, and
-                  I&apos;ll follow up personally soon.
-                </p>
-              </>
-            ) : (
-              <>
-                <h3>Where should I send your results?</h3>
-                <p>
-                  Enter your name and email, and I&apos;ll send you a personalized read on where
-                  you are, plus the path I&apos;d recommend for you.
-                </p>
-                <form onSubmit={handleSubmit}>
-                  <div className="cap-row">
-                    <input type="text" name="name" placeholder="Your name" required />
-                    <input type="email" name="email" placeholder="Your email" required />
-                  </div>
-                  <label className="cap-consent">
-                    <input type="checkbox" name="consent" required />
-                    I&apos;m okay with In Your Nature emailing me my results and following up.
-                  </label>
-                  {!allAnswered && (
-                    <p className="cap-fine">Answer all the questions above to get your result.</p>
-                  )}
-                  <button
-                    type="submit"
-                    className="btn btn-solid cap-submit"
-                    disabled={status === 'sending' || !allAnswered}
-                  >
-                    {status === 'sending' ? 'Sending…' : 'Send me my results'}
-                  </button>
-                  {status === 'error' && (
-                    <p className="cerror" role="alert">
-                      {errorMessage || 'Something went wrong sending that. Please try again.'}
-                    </p>
-                  )}
-                  <p className="cap-fine">No spam, ever. Just your result and a genuine next step.</p>
-                </form>
-              </>
-            )}
+      <div className="quiz-card">
+        <div className="quiz-q-kicker">First, in your own words</div>
+        <div className="quiz-q-text">What&apos;s going on for you right now? What brought you here?</div>
+        <textarea
+          name="situation"
+          rows={3}
+          placeholder="A sentence or two is perfect: where you're at, what feels stuck, or what you're hoping to change."
+        />
+      </div>
+
+      {QUESTIONS.map((item, qi) => (
+        <div className="quiz-card" key={item.key}>
+          <div className="quiz-q-kicker">
+            Question {qi + 1} of {QUESTIONS.length}
+          </div>
+          <div className="quiz-q-text">{item.q}</div>
+          <div className="quiz-opts">
+            {item.opts.map((opt) => (
+              <button
+                key={opt.label}
+                type="button"
+                className={`quiz-opt${labels[qi] === opt.label ? ' sel' : ''}`}
+                onClick={() => selectOption(qi, opt)}
+              >
+                <span className="quiz-dot" aria-hidden="true" />
+                <span>{opt.label}</span>
+              </button>
+            ))}
           </div>
         </div>
+      ))}
+
+      {status === 'sent' && tier ? (
+        <div className="quiz-card quiz-result">
+          <div className="quiz-center">
+            <span className="quiz-badge">Your recommended starting point</span>
+            <h3>{recommendedTier}</h3>
+            <div className="quiz-result-price">{tier.price}</div>
+            <p>{tier.desc}</p>
+          </div>
+          <ul>
+            {tier.list.map((li) => (
+              <li key={li}>{li}</li>
+            ))}
+          </ul>
+          <div className="quiz-guarantee">
+            My promise: if you don&apos;t feel real clarity after your first session,
+            I&apos;ll add up to two more sessions at no extra cost.
+          </div>
+          <div className="quiz-center">
+            <Link to="/#contact" className="btn btn-solid">
+              Book a free call &rarr;
+            </Link>
+          </div>
+        </div>
+      ) : (
+        allAnswered && (
+          <div className="quiz-card quiz-gate">
+            <div className="quiz-center">
+              <h3>Where should I send your result?</h3>
+              <p>
+                Enter your name and email, and your personalized recommendation appears right
+                away, plus I&apos;ll send you a copy to keep.
+              </p>
+            </div>
+            <div className="quiz-field">
+              <label htmlFor="quiz-name">First name</label>
+              <input type="text" id="quiz-name" name="name" autoComplete="given-name" required />
+            </div>
+            <div className="quiz-field">
+              <label htmlFor="quiz-email">Email</label>
+              <input type="email" id="quiz-email" name="email" autoComplete="email" required />
+            </div>
+            <label className="quiz-consent">
+              <input type="checkbox" name="consent" required />
+              It&apos;s okay to email me my result and occasional notes from In Your Nature. (No
+              spam, unsubscribe anytime.)
+            </label>
+            {status === 'error' && (
+              <p className="quiz-err" role="alert">
+                {errorMessage || 'Something went wrong sending that. Please try again.'}
+              </p>
+            )}
+            <div className="quiz-center">
+              <button type="submit" className="btn btn-solid" disabled={status === 'sending'}>
+                {status === 'sending' ? 'One moment…' : 'Show my result →'}
+              </button>
+            </div>
+          </div>
+        )
       )}
-    </>
+    </form>
   )
 }
 

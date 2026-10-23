@@ -335,7 +335,7 @@ function Home() {
                 <li>
                   <b>Everything in The Blueprint</b>
                 </li>
-                <li>3 months of coaching, every two weeks</li>
+                <li>3 months of coaching, a session every two weeks</li>
                 <li>
                   <b>Your days:</b> a routine, rhythm &amp; rest that fit you
                 </li>
@@ -349,7 +349,6 @@ function Home() {
                   <b>Your environments:</b> the settings &amp; people where you thrive
                 </li>
                 <li>Your core toolkit: daily-response &amp; rhythm tools</li>
-                <li>Journaling prompts written around your Blueprint</li>
                 <li>Between-session email support</li>
               </ul>
               <Link to="/#contact" className="btn btn-solid tier-cta">
