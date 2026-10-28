@@ -1,0 +1,35 @@
+.dark-banner {
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dark-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  flex: 1 1 380px;
+}
+
+.dark-banner-eyebrow {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--sage-300);
+}
+
+.dark-banner-title {
+  font-size: 30px;
+  color: var(--cream);
+}
+
+.dark-banner-body {
+  color: var(--sage-text);
+}

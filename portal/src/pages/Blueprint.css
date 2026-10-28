@@ -1,0 +1,143 @@
+.blueprint-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 760px;
+}
+
+.blueprint-title {
+  font-size: 48px;
+}
+
+.blueprint-summary {
+  font-size: 18px;
+}
+
+.blueprint-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.facet-eye {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--clay);
+  font-size: 16px;
+}
+
+/* Facet picker */
+.facet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.facet-card {
+  background: var(--surface);
+  border: 1px solid var(--plum-line);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.facet-card:hover {
+  border-color: var(--plum);
+  color: var(--ink);
+}
+
+/* 2px teal border in the design; the inset ring adds the second pixel without shifting layout. */
+.facet-card.active {
+  border-color: var(--teal);
+  box-shadow: inset 0 0 0 1px var(--teal), var(--shadow-card);
+}
+
+.facet-card-title {
+  font-size: 21px;
+}
+
+/* Facet reader */
+.facet-article {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: clamp(24px, 4vw, 44px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  scroll-margin-top: 24px;
+}
+
+.facet-body {
+  flex: 999 1 420px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 680px;
+}
+
+.facet-body .facet-eye {
+  font-size: 18px;
+}
+
+.facet-title {
+  font-size: 36px;
+}
+
+.facet-text {
+  font-size: 17px;
+  white-space: pre-line;
+}
+
+.facet-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.facet-aside {
+  flex: 1 1 240px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.highlights {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.highlights li {
+  padding: 12px 14px;
+  background: var(--bg);
+  border-radius: 13px;
+}
+
+.facet-journal {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.facet-journal .eyebrow {
+  color: var(--plum);
+}
+
+.facet-journal-prompt {
+  font-size: 15px;
+}

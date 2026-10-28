@@ -1,0 +1,60 @@
+.home-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.home-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.home-title {
+  font-size: 48px;
+}
+
+.home-subtitle {
+  font-size: 22px;
+  color: var(--teal);
+}
+
+.actions-tight {
+  margin-top: 4px;
+}
+
+.self-start {
+  align-self: flex-start;
+}
+
+.program-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.program-tagline {
+  color: var(--plum);
+}
+
+.blueprint-kicker {
+  color: var(--clay);
+  font-size: 17px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.amount {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  color: var(--teal);
+  line-height: 1;
+}
