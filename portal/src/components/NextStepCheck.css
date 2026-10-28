@@ -1,0 +1,29 @@
+.check {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--sage-50);
+}
+
+.check:last-child {
+  border-bottom: 0;
+}
+
+.check input {
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: var(--teal);
+  flex: none;
+}
+
+.check input:checked + label {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.check-due {
+  font-size: 13px;
+  color: var(--muted);
+}

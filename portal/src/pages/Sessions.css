@@ -1,0 +1,121 @@
+.sessions-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.sessions-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sessions-title {
+  font-size: 44px;
+}
+
+.sessions-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.sessions-lists {
+  flex: 999 1 480px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sessions-lists .card {
+  gap: 4px;
+}
+
+.sessions-card-title {
+  font-size: 24px;
+}
+
+/* Session rows */
+.session-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--sage-50);
+}
+
+.session-row:last-child {
+  border-bottom: 0;
+}
+
+.date-badge {
+  width: 64px;
+  flex: none;
+  text-align: center;
+  border-radius: 14px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 8px 0;
+  line-height: 1.1;
+}
+
+.date-badge span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.date-badge b {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.session-info {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.session-title-line {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.session-row .actions .btn {
+  padding: 0 20px;
+}
+
+/* Next steps sidebar */
+.steps-card {
+  flex: 1 1 300px;
+  gap: 10px;
+}
+
+.steps-title {
+  font-size: 22px;
+}
+
+.steps-group-label {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.steps-group-label.first {
+  margin-top: 6px;
+}
+
+.guarantee {
+  font-size: 14px;
+  max-width: 640px;
+}

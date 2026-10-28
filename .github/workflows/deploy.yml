@@ -24,6 +24,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            portal/package-lock.json
 
       - run: npm ci
       - run: npm run lint
@@ -32,9 +35,23 @@ jobs:
       # default base of '/' in vite.config.js applies.
       - run: npm run build
 
-      # Pages has no SPA fallback: serving index.html as 404.html lets
-      # deep links like /about load the app and let the router take over.
-      - run: cp dist/index.html dist/404.html
+      # The client portal is its own Vite app, built for /portal/ and placed inside the site.
+      # GitHub Pages can't proxy, so it calls the backend directly at the URL in the
+      # PORTAL_API_URL repository variable (Settings > Secrets and variables > Actions > Variables).
+      - name: Build client portal
+        working-directory: portal
+        env:
+          VITE_API_URL: ${{ vars.PORTAL_API_URL }}
+        run: |
+          npm ci
+          npm run lint
+          npm run build
+      - run: cp -r portal/dist dist/portal
+
+      # Pages has no SPA fallback: 404.html is the site's index.html, so deep
+      # links like /about load the app and the router takes over. Links under
+      # /portal/ are forwarded to the portal app instead.
+      - run: node scripts/make-404.mjs
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,0 +1,84 @@
+.auth-page {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 48px 16px;
+  background: var(--sage-50);
+}
+
+.auth-brand {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  color: var(--ink);
+}
+
+.auth-brand em {
+  color: var(--teal);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  gap: 18px;
+  padding: 32px clamp(20px, 5vw, 36px);
+}
+
+.auth-title {
+  font-size: 34px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-form .btn {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.auth-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.auth-footnote {
+  font-size: 14px;
+  max-width: 440px;
+  text-align: center;
+}
+
+.auth-error {
+  background: var(--clay-50);
+  color: var(--clay-dark);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.auth-notice {
+  background: var(--sage-100);
+  color: var(--teal-dark);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.auth-splash {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 16px;
+  text-align: center;
+}

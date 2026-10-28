@@ -40,6 +40,8 @@ function Nav() {
           <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : undefined)}>
             About
           </NavLink>
+          {/* The portal is a separate app under /portal/, so this is a full page load, not a router link. */}
+          <a href="/portal/">Client login</a>
           <Link to="/#contact" className="btn btn-ghost">
             Book a free call
           </Link>

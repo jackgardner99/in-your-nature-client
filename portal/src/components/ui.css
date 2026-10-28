@@ -1,0 +1,147 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.card-flat {
+  box-shadow: none;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-clay {
+  background: var(--clay);
+  color: #fff;
+}
+.btn-clay:hover {
+  background: var(--clay-dark);
+  color: #fff;
+}
+
+.btn-teal {
+  background: var(--teal);
+  color: #fff;
+}
+.btn-teal:hover {
+  background: var(--teal-dark);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--plum);
+  border: 1.5px solid var(--plum);
+}
+.btn-ghost:hover {
+  background: var(--plum-50);
+  color: var(--plum);
+}
+
+.btn-sage {
+  background: var(--sage-400);
+  color: var(--ink-deep);
+}
+.btn-sage:hover {
+  color: var(--ink-deep);
+  filter: brightness(1.05);
+}
+
+.btn-outline-light {
+  background: transparent;
+  color: var(--cream);
+  border: 1.5px solid var(--sage-300);
+}
+.btn-outline-light:hover {
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.chip-active,
+.chip-paid {
+  background: var(--sage-100);
+  color: var(--teal-dark);
+}
+
+.chip-due {
+  background: var(--clay-50);
+  color: var(--clay-dark);
+}
+
+.chip-scheduled {
+  background: var(--bg);
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+.chip-plum {
+  background: var(--plum-50);
+  color: var(--plum);
+}
+
+.chip-outline {
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.bar {
+  height: 8px;
+  border-radius: 99px;
+  background: var(--sage-100);
+  overflow: hidden;
+}
+
+.bar > i {
+  display: block;
+  height: 100%;
+  background: var(--teal);
+  border-radius: 99px;
+}
