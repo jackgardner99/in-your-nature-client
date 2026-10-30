@@ -6,6 +6,7 @@ import { Card } from '../../components/ui'
 import { longDate, partOfDay, timeRange } from '../../lib/format'
 import { SESSION_KIND_LABEL } from '../../lib/staff'
 import { useStaffMe } from '../../state/auth'
+import SquareSync from '../components/SquareSync'
 
 export default function Overview() {
   const me = useStaffMe()
@@ -67,6 +68,8 @@ export default function Overview() {
               </div>
             )}
           </Card>
+
+          <SquareSync />
         </>
       )}
     </>

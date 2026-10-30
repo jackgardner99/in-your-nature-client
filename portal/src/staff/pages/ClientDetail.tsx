@@ -8,6 +8,7 @@ import { Button, Card, Chip } from '../../components/ui'
 import { fullDate } from '../../lib/format'
 import { ACCOUNT_LABEL, INQUIRY_LABEL, STAGE_LABEL, options, useAction } from '../../lib/staff'
 import ClientCircle from '../components/ClientCircle'
+import ClientInvoices from '../components/ClientInvoices'
 import ClientPrograms from '../components/ClientPrograms'
 import ClientSessions from '../components/ClientSessions'
 import { Field, FormError, Select } from '../forms'
@@ -52,6 +53,7 @@ export default function ClientDetail() {
 
           <ClientPrograms client={c} programs={programs.data ?? []} onChanged={detail.reload} />
           <ClientSessions client={c} onChanged={detail.reload} />
+          <ClientInvoices client={c} />
           <ClientCircle client={c} onChanged={detail.reload} />
           <Intake client={c} />
         </>
