@@ -1,5 +1,5 @@
 // Create a form at formspree.io and paste its endpoint here.
-export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdekkybb'
+export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mgaallwo'
 
 // The assessment quiz backend (Railway), see /api/assessment.
 export const ASSESSMENT_API_URL =
