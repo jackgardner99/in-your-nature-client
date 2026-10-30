@@ -58,7 +58,7 @@ export default function Home() {
 const minutesBetween = (a: string, b: string) => Math.round((Date.parse(b) - Date.parse(a)) / 60000)
 
 function NextSessionCard() {
-  const sessions = useApi<SessionsResponse>('/sessions')
+  const sessions = useApi<SessionsResponse>('/sessions', { refreshOnFocus: true })
   const next = sessions.data?.upcoming[0]
 
   return (
@@ -72,7 +72,7 @@ function NextSessionCard() {
             Nothing booked yet
           </h2>
           <div className="actions actions-tight">
-            <ButtonLink to={sessions.data.bookUrl} variant="teal">
+            <ButtonLink to={sessions.data.bookUrl} variant="teal" newTab>
               Book a session
             </ButtonLink>
           </div>
