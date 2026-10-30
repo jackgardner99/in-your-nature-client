@@ -6,6 +6,7 @@ import type {
   ClientStage,
   EnrollmentStatus,
   InquiryStatus,
+  InvoiceStatus,
   MembershipStatus,
   SessionKind,
   SessionStatus,
@@ -58,6 +59,18 @@ export const MEMBERSHIP_LABEL: Record<MembershipStatus, string> = {
   active: 'Active',
   past_due: 'Past due',
   canceled: 'Canceled',
+}
+
+export const INVOICE_LABEL: Record<InvoiceStatus, string> = {
+  draft: 'Draft',
+  unpaid: 'Unpaid',
+  scheduled: 'Scheduled',
+  partially_paid: 'Partly paid',
+  paid: 'Paid',
+  partially_refunded: 'Partly refunded',
+  refunded: 'Refunded',
+  canceled: 'Canceled',
+  failed: 'Payment failed',
 }
 
 export const ACCOUNT_LABEL: Record<AccountState, string> = {
