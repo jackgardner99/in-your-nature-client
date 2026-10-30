@@ -1,16 +1,20 @@
 import { createContext, useContext } from 'react'
 import type { Me } from '../api/types'
+import type { StaffMe } from '../api/staffTypes'
+
+/** /me for clients, /staff/me for staff. */
+export type AuthMe = Me | StaffMe
 
 export type AuthState =
   | { status: 'loading' }
   | { status: 'signedOut' }
   | { status: 'error'; retry: () => void }
-  | { status: 'signedIn'; me: Me }
+  | { status: 'signedIn'; me: AuthMe }
 
 export type AuthContextValue = {
   auth: AuthState
-  /** Call with the Me returned by login, invite or reset. */
-  signIn: (me: Me) => void
+  /** Call with the account returned by login, invite or reset. */
+  signIn: (me: AuthMe) => void
   signOut: () => Promise<void>
 }
 
@@ -22,8 +26,14 @@ export function useAuth() {
   return ctx
 }
 
-/** The signed-in client. Only use inside routes wrapped by <RequireAuth>. */
+/** The signed-in client. Only use inside client routes wrapped by <RequireAuth>. */
 export function useMe() {
   const { auth } = useAuth()
-  return auth.status === 'signedIn' ? auth.me : undefined
+  return auth.status === 'signedIn' ? (auth.me as Me) : undefined
+}
+
+/** The signed-in staff user. Only use inside staff routes wrapped by <RequireAuth>. */
+export function useStaffMe() {
+  const { auth } = useAuth()
+  return auth.status === 'signedIn' ? (auth.me as StaffMe) : undefined
 }

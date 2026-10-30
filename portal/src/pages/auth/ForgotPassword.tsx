@@ -2,9 +2,11 @@ import { useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { api } from '../../api/client'
 import { Button, Card } from '../../components/ui'
+import { useRealm } from '../../state/realm'
 import { authErrorMessage } from './authErrors'
 
 export default function ForgotPassword() {
+  const realm = useRealm()
   const [email, setEmail] = useState('')
   const [sentTo, setSentTo] = useState<string>()
   const [error, setError] = useState<string>()
@@ -15,7 +17,7 @@ export default function ForgotPassword() {
     setSubmitting(true)
     setError(undefined)
     try {
-      await api.post('/auth/forgot-password', { email: email.trim() })
+      await api.post(`${realm.api}/auth/forgot-password`, { email: email.trim() })
       setSentTo(email.trim())
     } catch (err) {
       setError(authErrorMessage(err))
@@ -62,7 +64,7 @@ export default function ForgotPassword() {
         </form>
       )}
 
-      <Link to="/login" className="text-link">
+      <Link to={`${realm.base}/login`} className="text-link">
         Back to sign in
       </Link>
     </Card>

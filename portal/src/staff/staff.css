@@ -1,0 +1,344 @@
+/* Staff portal. Builds on the client portal's tokens (index.css) and components (ui.css). */
+
+.side-staff {
+  background: var(--plum-50);
+}
+
+.side-staff .nav:hover {
+  background: #eedfe5;
+}
+
+.brand-tag {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--plum);
+}
+
+.staff-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.staff-head-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.staff-title {
+  font-size: clamp(30px, 4vw, 40px);
+  overflow-wrap: anywhere;
+}
+
+.staff-h2 {
+  font-size: 22px;
+}
+
+.back-link {
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.staff-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 16px;
+}
+
+.staff-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.staff-stat-value {
+  font-family: var(--font-serif);
+  font-size: 38px;
+  line-height: 1.1;
+}
+
+.staff-stat-label {
+  font-size: 14px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* Lists of records */
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+  min-width: 0;
+}
+
+.row:first-child {
+  border-top: 0;
+}
+
+a.row:hover .row-title {
+  color: var(--teal);
+}
+
+.row-main {
+  flex: 1 1 220px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.row-title {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.row-meta {
+  font-size: 14px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.row-side {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.empty {
+  color: var(--muted);
+  padding: 6px 0;
+}
+
+/* Forms */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.staff-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.staff-check input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--teal);
+  flex: none;
+}
+
+textarea.input {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+select.input {
+  appearance: auto;
+}
+
+.input-sm {
+  min-height: 40px;
+  padding: 6px 12px;
+  font-size: 15px;
+  width: auto;
+}
+
+.form-error {
+  background: var(--clay-50);
+  color: var(--clay-dark);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.saved-note {
+  font-size: 14px;
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.btn-sm {
+  min-height: 36px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.toolbar .input {
+  flex: 1 1 220px;
+}
+
+.filter {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  border-radius: 999px;
+  min-height: 36px;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.filter[aria-pressed='true'] {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}
+
+/* Expandable records (sessions, calls) */
+
+.record {
+  border-top: 1px solid var(--line);
+  padding: 14px 0;
+}
+
+.record:first-child {
+  border-top: 0;
+}
+
+.record > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  align-items: center;
+}
+
+.record > summary::-webkit-details-marker {
+  display: none;
+}
+
+.record > summary::after {
+  content: '▾';
+  color: var(--muted);
+  margin-left: auto;
+}
+
+.record[open] > summary::after {
+  content: '▴';
+}
+
+.record-body {
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.step-text {
+  flex: 1 1 200px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.step-done .step-text {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.quote {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 12px 14px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Blueprint editor */
+
+.facet-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.facet-editor + .facet-editor {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+
+.facet-editor h3 {
+  font-size: 22px;
+}
+
+.sticky-actions {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  z-index: 1;
+}
+
+.step input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--teal);
+  flex: none;
+}
