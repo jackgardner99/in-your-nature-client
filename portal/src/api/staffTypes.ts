@@ -9,6 +9,16 @@ export type SessionKind = 'intro' | 'blueprint_walkthrough' | 'coaching' | 'guar
 export type SessionStatus = 'scheduled' | 'completed' | 'no_show' | 'canceled'
 export type BlueprintStatus = 'intake' | 'drafting' | 'ready' | 'walked_through'
 export type MembershipStatus = 'active' | 'past_due' | 'canceled'
+export type InvoiceStatus =
+  | 'draft'
+  | 'unpaid'
+  | 'scheduled'
+  | 'partially_paid'
+  | 'paid'
+  | 'partially_refunded'
+  | 'refunded'
+  | 'canceled'
+  | 'failed'
 export type PromptAudience = 'circle' | 'all_clients'
 /** none: never invited · invited: invite link pending · active: has set a password */
 export type AccountState = 'none' | 'invited' | 'active'
@@ -112,12 +122,32 @@ export type QuizRow = {
   answers: { questionKey: string; question: string; answer: string; score: number }[]
 }
 
+/** A Square invoice, copied in by webhook. Kadi creates them in the Square Dashboard. */
+export type Invoice = {
+  id: string
+  invoiceNumber: string
+  programName: string | null
+  status: InvoiceStatus
+  total: number
+  paid: number
+  publicUrl: string | null
+  sentAt: string | null
+  paidAt: string | null
+}
+
+/** POST /staff/square/sync */
+export type SquareSyncReport = {
+  synced: number
+  unmatched: { invoiceNumber: string; email: string; name: string; reason: string }[]
+}
+
 /** GET/PATCH /staff/clients/:id, POST /staff/clients */
 export type ClientDetail = ClientRow & {
   timezone: string
   inviteExpiresAt: string | null
   enrollments: Enrollment[]
   membership: Membership | null
+  invoices: Invoice[]
   inquiries: InquiryRow[]
   quizResponses: QuizRow[]
   sharedJournal: { id: string; createdAt: string; promptText: string | null; body: string }[]
