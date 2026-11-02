@@ -299,9 +299,9 @@ function Home() {
 
           <div className="tiers">
             <Reveal className="tier">
-              <div className="tier-name">The Blueprint</div>
+              <div className="tier-name">The Blueprint Program</div>
               <div className="tier-for">Know yourself</div>
-              <div className="tier-price">$500</div>
+              {/* <div className="tier-price">$500</div> */}
               <div className="tier-pay">Paid in full</div>
               <p className="tier-desc">
                 A clear, personalized read on who you really are, walked through together in a
@@ -314,7 +314,7 @@ function Home() {
                 <li>Keep-forever report</li>
               </ul>
               <p className="tier-upgrade">
-                Want more support? Your $500 credits toward the Clarity Program if you upgrade
+                Want more support? Your Blueprint Program credits toward the Clarity Program if you upgrade
                 within 30 days.
               </p>
               <Link to="/#contact" className="btn btn-ghost tier-cta">
@@ -326,7 +326,7 @@ function Home() {
               <div className="tier-badge">★ Most people start here</div>
               <div className="tier-name">The Clarity Program</div>
               <div className="tier-for">Live it, in the areas that matter most</div>
-              <div className="tier-price">$1,500</div>
+              {/* <div className="tier-price">$1,500</div> */}
               <p className="tier-desc">
                 Everything in the Blueprint, plus three months of coaching to actually live as
                 yourself, in your days, your relationships, and your direction.
@@ -383,10 +383,10 @@ function Home() {
               </p>
             </div>
             <div className="circle-price">
-              <div className="tier-price">
+              {/* <div className="tier-price">
                 $40<span className="price-period">/month</span>
               </div>
-              <div className="tier-pay">Cancel anytime</div>
+              <div className="tier-pay">Cancel anytime</div> */}
               <Link to="/#contact" className="btn btn-ghost">
                 Join the Circle
               </Link>
