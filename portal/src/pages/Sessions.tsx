@@ -11,7 +11,7 @@ import { useNextSteps } from '../state/nextSteps'
 import './Sessions.css'
 
 export default function Sessions() {
-  const sessions = useApi<SessionsResponse>('/sessions')
+  const sessions = useApi<SessionsResponse>('/sessions', { refreshOnFocus: true })
   const program = useApi<Program>('/program')
   const p = program.data
 
@@ -28,7 +28,7 @@ export default function Sessions() {
           )}
         </div>
         {sessions.data && (
-          <ButtonLink to={sessions.data.bookUrl} variant="teal">
+          <ButtonLink to={sessions.data.bookUrl} variant="teal" newTab>
             Book a session
           </ButtonLink>
         )}
@@ -131,7 +131,7 @@ function UpcomingRow({ session: s, isNext }: { session: UpcomingSession; isNext:
             Join
           </ButtonLink>
         )}
-        <ButtonLink to={s.rescheduleUrl} variant="ghost">
+        <ButtonLink to={s.rescheduleUrl} variant="ghost" newTab>
           Reschedule
         </ButtonLink>
       </div>
