@@ -12,12 +12,12 @@ const flow = [
     body: "A free, unhurried conversation. I listen for what lights you up, what wears you down, and what you're reaching for.",
   },
   {
-    title: 'We map who you are',
-    body: 'Through real conversation and time-tested frameworks, we get clear on your genuine gifts, strengths, and the environments where you do your best.',
+    title: 'We map your gifts',
+    body: "I bring together proven personality frameworks, built into my own approach, and what comes out of our live conversation. You don't end with a number or a label, you end with your real gifts, strengths, and the environments where you come alive, clearly named.",
   },
   {
-    title: 'It translates to your life',
-    body: 'That clarity becomes real direction: work that fits you, a daily rhythm that suits you, and confident choices that finally feel like yours.',
+    title: 'It becomes your life',
+    body: 'We put it all into your Blueprint, then adjust your days, your work, and your direction around who you actually are, so your life starts working for you instead of against you.',
   },
 ]
 
@@ -55,7 +55,7 @@ const facets = [
   {
     key: "where you're headed",
     title: 'Career directions',
-    body: 'The kinds of roles and work that fit your nature, and the ones that will quietly drain you no matter the pay.',
+    body: "Your top five careers that truly match who you are, the kind of path that fits you (traditional or non-traditional), and the roles that would quietly drain you no matter the pay.",
   },
   {
     key: 'your growth edge',
@@ -201,9 +201,10 @@ function Home() {
             <span className="eyebrow">How we work together</span>
             <h2>Understand yourself first. Everything else follows.</h2>
             <p>
-              The clearer you are on who you are, the more naturally the right things fall into
-              place: the career that fits, the way you want to live your days, the decisions that
-              used to feel hard.
+              My approach blends time-tested personality frameworks, which I&apos;ve shaped into
+              my own method, with real one on one conversation. Together they map your genuine
+              gifts and how you&apos;re wired. We put that into your Blueprint, then adjust your
+              real life around it so it finally works for you.
             </p>
           </div>
           <div className="flow">
@@ -242,8 +243,11 @@ function Home() {
             ))}
           </div>
           <p className="blue-note">
-            The frameworks behind it are time-tested and personal, but you never have to learn
-            any of them. I translate all of it into plain language about you.
+            It starts with my own questionnaire, which I built from a blend of time-tested
+            personality frameworks, together with everything I pick up in our live conversation.
+            You never have to learn any of it, and you don&apos;t end with a number or a label.
+            You end with your real gifts clearly stated, alongside the facets above, all in plain
+            language about you.
           </p>
         </div>
       </section>
@@ -371,27 +375,6 @@ function Home() {
             Each quarter I hold a few sliding-scale spots for people who need them. Just mention
             it on your intro call.
           </p>
-
-          <Reveal className="circle">
-            <div>
-              <div className="tier-name">The Circle</div>
-              <div className="tier-for">A small community, all year</div>
-              <p className="tier-desc">
-                For anyone who wants to keep growing alongside others. Each month: one live group
-                call, fresh journaling prompts, and a small, kind community of people doing this
-                same work. Open to everyone, and a gentle place to start.
-              </p>
-            </div>
-            <div className="circle-price">
-              {/* <div className="tier-price">
-                $40<span className="price-period">/month</span>
-              </div>
-              <div className="tier-pay">Cancel anytime</div> */}
-              <Link to="/#contact" className="btn btn-ghost">
-                Join the Circle
-              </Link>
-            </div>
-          </Reveal>
 
           <p className="tiers-note">
             Not sure which fits? Take the quiz above, or just book a free call and we&apos;ll

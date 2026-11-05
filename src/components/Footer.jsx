@@ -16,6 +16,14 @@ function Footer({ heading, children }) {
             In Your Nature
           </div>
         </div>
+        <div className="foot-links">
+          <Link to="/#blueprint">The Blueprint</Link>
+          <Link to="/#work">Work with me</Link>
+          <Link to="/about">About</Link>
+          {/* The portal is a separate app under /portal/, so this is a full page load, not a router link. */}
+          <a href="/portal/">Client login</a>
+          <a href="mailto:getinyournature@gmail.com">getinyournature@gmail.com</a>
+        </div>
         <p className="foot-fine">
           In Your Nature provides coaching and personal-development guidance intended to support
           your own growth and decisions. It is not a substitute for licensed therapy, medical,

@@ -11,7 +11,7 @@ const approach = [
   {
     key: 'then',
     title: 'I show you yourself',
-    body: 'I translate time-tested frameworks and my own read of you into plain language: your gifts, your rhythm, your direction.',
+    body: "Using my own questionnaire, built from a blend of time-tested personality frameworks, plus our live conversation, I map how you're wired. You don't end with a number or a label, you end with your real gifts clearly named, along with your rhythm, your environments, your career direction, and more, all in plain language.",
   },
   {
     key: 'always',
@@ -30,7 +30,7 @@ function About() {
           <span className="orb orb-grad"></span>
           <span className="orb orb-grad2"></span>
         </div>
-        <div className="wrap hero-in">
+        <div className="wrap hero-in hero-in-photo">
           <div className="hero-copy">
             <span className="eyebrow">About</span>
             <h1>
@@ -43,6 +43,7 @@ function About() {
               there too.
             </p>
           </div>
+          <img className="hero-photo" src="/kadi.jpg" alt="Kadi" />
         </div>
       </header>
 
@@ -75,11 +76,12 @@ function About() {
             </p>
             <p>
               That&apos;s why I built In Your Nature. I come from a background in consulting and
-              coaching, and I&apos;ve spent years helping people get clear on their vision, find
-              work that suits them, and understand their own gifts. I bring warmth, honesty, and a
-              real gift for seeing people, plus time-tested frameworks that let me show you your
-              own nature with a clarity that&apos;s hard to find on your own. If you&apos;re where
-              I was, I promise you: there is more. And I&apos;d love to help you find it.
+              coaching, helping people get clear on their vision, find work that suits them, and
+              understand their own gifts. I bring warmth, honesty, and a real gift for seeing
+              people, plus my own questionnaire, built from a blend of time-tested personality
+              frameworks, which together let me show you your own nature with a clarity
+              that&apos;s hard to find on your own. If you&apos;re where I was, I promise you:
+              there is more. And I&apos;d love to help you find it.
             </p>
           </div>
         </div>
