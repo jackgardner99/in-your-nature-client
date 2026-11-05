@@ -27,18 +27,16 @@ const QUESTIONS = [
 // actual tier cards above, not reinvented here.
 const TIERS = {
   'The Blueprint': {
-    price: '$500',
     desc: 'A clear, personalized read on who you really are, walked through together in a live session.',
     list: [
       'Free intro conversation first',
       'Your full personalized Blueprint',
       'One live walkthrough session with me',
       'Keep-forever report',
-      'Your $500 credits toward the Clarity Program if you upgrade within 30 days',
+      'Credits toward the Clarity Program if you upgrade within 30 days',
     ],
   },
   'The Clarity Program': {
-    price: '$1,500',
     desc: 'Everything in the Blueprint, plus three months of coaching to actually live as yourself, in your days, your relationships, and your direction.',
     list: [
       'Everything in The Blueprint',
@@ -152,7 +150,6 @@ function Quiz() {
           <div className="quiz-center">
             <span className="quiz-badge">Your recommended starting point</span>
             <h3>{recommendedTier}</h3>
-            <div className="quiz-result-price">{tier.price}</div>
             <p>{tier.desc}</p>
           </div>
           <ul>
