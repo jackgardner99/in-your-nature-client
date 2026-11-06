@@ -306,7 +306,7 @@ function Home() {
               <div className="tier-name">The Blueprint Program</div>
               <div className="tier-for">Know yourself</div>
               {/* <div className="tier-price">$500</div> */}
-              <div className="tier-pay">Paid in full</div>
+              {/* <div className="tier-pay">Paid in full</div> */}
               <p className="tier-desc">
                 A clear, personalized read on who you really are, walked through together in a
                 live session.
