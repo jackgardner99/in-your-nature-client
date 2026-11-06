@@ -30,6 +30,12 @@ function Footer({ heading, children }) {
           legal, or financial advice. Any wellbeing suggestions are shared from personal and
           client experience, not as professional or medical direction.
         </p>
+        <p className="foot-credit">
+          Site built by{' '}
+          <a href="https://gardnersolutions.co/" target="_blank" rel="noopener noreferrer">
+            Gardner Solutions
+          </a>
+        </p>
       </div>
     </footer>
   )
