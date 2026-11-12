@@ -19,6 +19,7 @@ function Footer({ heading, children }) {
         <div className="foot-links">
           <Link to="/#blueprint">The Blueprint</Link>
           <Link to="/#work">Work with me</Link>
+          <Link to="/kids">Kids &amp; Teens</Link>
           <Link to="/about">About</Link>
           {/* The portal is a separate app under /portal/, so this is a full page load, not a router link. */}
           <a href="/portal/">Client login</a>

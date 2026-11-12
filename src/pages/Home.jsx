@@ -21,6 +21,40 @@ const flow = [
   },
 ]
 
+const services = [
+  {
+    key: 'find your path',
+    title: 'Career Coaching & Job Search',
+    body: 'One-on-one career coaching to find your ideal job, clarify your direction, and move through a job search with a plan that actually fits who you are.',
+  },
+  {
+    key: 'meaning',
+    title: 'Find Your Purpose & True Calling',
+    body: "Get clear on your purpose, your calling, and the direction you're meant for, so your work and your life finally point the same way.",
+  },
+  {
+    key: 'self-belief',
+    title: 'Confidence Coaching',
+    body: 'Build real, steady confidence: speak up, own your strengths, and stop shrinking in the rooms and moments that matter most.',
+  },
+  {
+    key: 'speak with ease',
+    title: 'Public Speaking Coaching',
+    body: 'Present, pitch, and speak in public with calm and presence, for talks, interviews, meetings, and the everyday moments that count.',
+  },
+  {
+    key: 'discover them',
+    title: 'Discover Your Gifts & Talents',
+    body: 'Through your Blueprint, uncover the natural gifts and talents you overlook because they come easily, and learn exactly how to use them.',
+  },
+  {
+    key: 'for young people',
+    title: 'Kids & Teens Coaching',
+    body: 'Confidence, public speaking, reading, and learning support for kids and teens, plus a parent-friendly Learning Blueprint.',
+    link: true,
+  },
+]
+
 const facets = [
   {
     key: 'who you are',
@@ -135,6 +169,29 @@ function Home() {
   return (
     <>
       <title>In Your Nature — coaching &amp; personal development</title>
+      <meta
+        name="description"
+        content="Career coaching, confidence coaching, and public speaking coaching to help you find your purpose, true calling, ideal job, and natural gifts and talents. For adults, kids, and teens."
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'ProfessionalService',
+            name: 'In Your Nature',
+            description:
+              'Career coaching, confidence coaching, and public speaking coaching to help you find your purpose, true calling, ideal job, and natural gifts and talents. For adults, kids, and teens.',
+            makesOffer: [
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Career Coaching & Job Search' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Confidence Coaching' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Public Speaking Coaching' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Kids & Teens Coaching' } },
+            ],
+          }),
+        }}
+      />
 
       <header className="hero">
         <div className="hero-orbs" aria-hidden="true">
@@ -212,6 +269,38 @@ function Home() {
               <Reveal className="flow-item" key={title}>
                 <h3>{title}</h3>
                 <p>{body}</p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ways I can help */}
+      <section className="sec" id="services">
+        <div className="wrap">
+          <div className="sec-head">
+            <span className="eyebrow">What I offer</span>
+            <h2>Ways I can help</h2>
+            <p>
+              Whether you&apos;re after a career change, your ideal job, more confidence, or help
+              finding your purpose, every path starts the same way: getting clear on who you are
+              and the gifts you&apos;re built to use.
+            </p>
+          </div>
+          <div className="facets dark">
+            {services.map(({ key, title, body, link }) => (
+              <Reveal className="facet" key={title}>
+                <div className="fk">{key}</div>
+                <h3>{title}</h3>
+                <p>
+                  {body}
+                  {link && (
+                    <>
+                      {' '}
+                      <Link to="/kids">Explore kids &amp; teens &rarr;</Link>
+                    </>
+                  )}
+                </p>
               </Reveal>
             ))}
           </div>
@@ -380,6 +469,39 @@ function Home() {
             Not sure which fits? Take the quiz above, or just book a free call and we&apos;ll
             figure it out together.
           </p>
+        </div>
+      </section>
+
+      {/* kids & teens band */}
+      <section className="sec" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <Reveal className="promo-split">
+            <div>
+              <span className="eyebrow">Kids &amp; teens</span>
+              <h2 style={{ fontSize: 'clamp(26px,3.4vw,36px)', margin: '8px 0 12px' }}>
+                Yes, I work with kids and teens too.
+              </h2>
+              <p style={{ color: 'var(--ink-soft)', fontSize: 17, marginBottom: 20, maxWidth: '52ch' }}>
+                From confidence and public speaking to reading and learning support, I help young
+                people grow into themselves. Parents also get a Learning Blueprint: a clear
+                picture of how their child is wired to learn, so you know exactly how to support
+                them.
+              </p>
+              <Link to="/kids" className="btn btn-solid">
+                Explore kids &amp; teens coaching
+              </Link>
+            </div>
+            <div className="promo-split-card">
+              <p>
+                &ldquo;Our granddaughter was struggling in 1st grade. Within a few weeks, Kaitlin
+                had her reading. Within a year she was reading over a hundred words a minute and
+                on the A honor roll. Kaitlin is like family to us.&rdquo;
+              </p>
+              <div className="who">
+                Mr. and Mrs. Moore <span>&middot; grandparents</span>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
