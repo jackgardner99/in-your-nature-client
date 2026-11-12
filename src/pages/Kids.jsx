@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { Link } from 'react-router'
 import Footer from '../components/Footer.jsx'
+import KidsQuiz from '../components/KidsQuiz.jsx'
 import Reveal from '../components/Reveal.jsx'
 
 const services = [
@@ -125,8 +126,8 @@ function Kids() {
               <Link to="/#contact" className="btn btn-solid">
                 Book a free intro call
               </Link>
-              <a href="#blueprint" className="btn btn-ghost">
-                See the Learning Blueprint
+              <a href="#quiz" className="btn btn-ghost">
+                Take the 1-minute quiz
               </a>
             </div>
             <p className="hero-proof">
@@ -282,6 +283,40 @@ function Kids() {
             <Link to="/#contact" className="btn btn-solid">
               Book a free intro call
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* find your child's starting point */}
+      <section className="sec quiz-band" id="quiz">
+        <div className="wrap">
+          <div className="sec-head">
+            <span className="eyebrow">Find your child&apos;s starting point</span>
+            <h2>Where is your child right now?</h2>
+            <p>
+              Answer a few quick questions and I&apos;ll send you a personalized read, plus the
+              next step I&apos;d recommend for your child. Takes about a minute.
+            </p>
+          </div>
+          <KidsQuiz />
+        </div>
+      </section>
+
+      {/* contact cta */}
+      <section className="sec contact-band">
+        <div className="wrap">
+          <div className="sec-head" style={{ marginBottom: 0 }}>
+            <span className="eyebrow">Let&apos;s talk</span>
+            <h2>Tell me about your child.</h2>
+            <p>
+              Book a free, no-pressure intro call and tell me where your child is at and what
+              you&apos;re hoping for. Together we&apos;ll figure out whether confidence coaching,
+              public speaking, reading and learning support, or a Learning Blueprint is the right
+              place to start.{' '}
+              <Link to="/#contact" style={{ color: 'var(--teal)', fontWeight: 700 }}>
+                Book your free call &rarr;
+              </Link>
+            </p>
           </div>
         </div>
       </section>
