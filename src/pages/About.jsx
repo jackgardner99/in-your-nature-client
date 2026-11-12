@@ -24,6 +24,10 @@ function About() {
   return (
     <>
       <title>About — In Your Nature</title>
+      <meta
+        name="description"
+        content="Meet Kadi, founder of In Your Nature. Career, confidence, and public speaking coaching for adults, plus confidence, reading, and learning support for kids and teens."
+      />
 
       <header className="hero">
         <div className="hero-orbs" aria-hidden="true">
@@ -84,6 +88,72 @@ function About() {
               there is more. And I&apos;d love to help you find it.
             </p>
           </div>
+        </div>
+      </section>
+
+      <section className="sec">
+        <div className="wrap">
+          <div className="sec-head">
+            <span className="eyebrow">Who I help</span>
+            <h2>For adults, and for kids and teens.</h2>
+            <p>
+              Whatever stage you&apos;re at, the work is the same at heart: understand how
+              you&apos;re wired, then build your life, work, or learning around it. I help adults
+              find direction and confidence, and I&apos;ve also worked hands-on with more than
+              twenty children, finding the way each one learns best.
+            </p>
+          </div>
+          <div className="facet-subhead">For adults</div>
+          <div className="facets">
+            <div className="facet">
+              <div className="fk">direction</div>
+              <h3>Career Coaching &amp; Job Search</h3>
+              <p>Find your ideal job and a direction that actually fits who you are, with a plan to get there.</p>
+            </div>
+            <div className="facet">
+              <div className="fk">self-belief</div>
+              <h3>Confidence Coaching</h3>
+              <p>Build steady, real confidence and stop shrinking in the rooms and moments that matter most.</p>
+            </div>
+            <div className="facet">
+              <div className="fk">your voice</div>
+              <h3>Public Speaking</h3>
+              <p>Speak and present with calm and presence, for talks, interviews, and everyday moments that count.</p>
+            </div>
+            <div className="facet">
+              <div className="fk">your gifts</div>
+              <h3>Your Blueprint: know your gifts</h3>
+              <p>A personalized read on how you&apos;re wired, your gifts, strengths, rhythm, and the work and life that genuinely fit you.</p>
+            </div>
+          </div>
+          <div className="facet-subhead">For kids &amp; teens</div>
+          <div className="facets">
+            <div className="facet">
+              <div className="fk">confidence</div>
+              <h3>Public speaking for kids</h3>
+              <p>I help children who freeze up or feel insecure find their voice and speak with real confidence.</p>
+            </div>
+            <div className="facet">
+              <div className="fk">reading</div>
+              <h3>A reading system that clicks</h3>
+              <p>I built a bespoke reading system for children with dyslexia and those who are struggling to read, meeting each child the way they actually learn.</p>
+            </div>
+            <div className="facet">
+              <div className="fk">speech</div>
+              <h3>Speaking with a stutter</h3>
+              <p>I work with kids and adults on public speaking, including gentle, practical methods that help reduce a stutter.</p>
+            </div>
+            <div className="facet">
+              <div className="fk">joy</div>
+              <h3>Fun ways to learn</h3>
+              <p>Most of all, I find playful, genuinely fun ways to learn, so progress feels good instead of like a chore.</p>
+            </div>
+          </div>
+          <p className="cta-center">
+            <Link to="/kids" className="btn btn-ghost">
+              Explore kids &amp; teens coaching
+            </Link>
+          </p>
         </div>
       </section>
 

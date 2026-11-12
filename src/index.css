@@ -479,6 +479,136 @@ section[id] {
   max-width: 70ch;
 }
 
+/* dark card variant (services grid, learning blueprint) */
+.facets.dark .facet {
+  background: var(--dusk);
+  border-color: var(--dusk);
+}
+.facets.dark .facet h3 {
+  color: #fbf7f0;
+}
+.facets.dark .facet .fk {
+  color: #e6a878;
+}
+.facets.dark .facet p {
+  color: #c9dad5;
+}
+.facets.dark .facet a {
+  color: #e6a878;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* small centered label between stacked facet groups */
+.facet-subhead {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--orange);
+  font-size: 16px;
+  text-align: center;
+  margin: 30px 0 16px;
+}
+.facet-subhead:first-of-type {
+  margin-top: 8px;
+}
+
+/* numbered process with connecting arrows */
+.process {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+.pstep {
+  flex: 1 1 0;
+  background: var(--card);
+  border: 1px solid var(--plum-line);
+  border-radius: 16px;
+  padding: 24px 18px;
+  text-align: center;
+}
+.pnum {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--mist-2);
+  border: 1px solid var(--plum-line);
+  color: var(--teal-deep);
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+.pstep h3 {
+  font-size: 18px;
+  color: var(--teal);
+  margin-bottom: 6px;
+}
+.pstep p {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.parrow {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  color: var(--orange);
+  padding: 0 8px;
+}
+@media (max-width: 760px) {
+  .process {
+    flex-direction: column;
+  }
+  .parrow {
+    transform: rotate(90deg);
+    padding: 10px 0;
+  }
+}
+
+/* promo split: a short pitch beside a testimonial card (home -> kids/teens) */
+.promo-split {
+  background: linear-gradient(180deg, var(--mist-2), #fff);
+  border: 1px solid var(--plum-line);
+  border-radius: var(--r);
+  padding: 40px 38px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 34px;
+  align-items: center;
+}
+.promo-split-card {
+  background: #fff;
+  border: 1px solid var(--plum-line);
+  border-radius: var(--r-sm);
+  padding: 24px 26px;
+}
+.promo-split-card p {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.promo-split-card .who {
+  margin-top: 14px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--teal);
+}
+.promo-split-card .who span {
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+@media (max-width: 760px) {
+  .promo-split {
+    grid-template-columns: 1fr;
+    padding: 30px 26px;
+  }
+}
+
 /* quiz */
 .quiz-band {
   background: linear-gradient(180deg, var(--mist-2), var(--shell));

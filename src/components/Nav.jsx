@@ -37,6 +37,9 @@ function Nav() {
         >
           <Link to="/#blueprint">The Blueprint</Link>
           <Link to="/#work">Work with me</Link>
+          <NavLink to="/kids" className={({ isActive }) => (isActive ? 'active' : undefined)}>
+            Kids &amp; Teens
+          </NavLink>
           <NavLink to="/about" className={({ isActive }) => (isActive ? 'active' : undefined)}>
             About
           </NavLink>
