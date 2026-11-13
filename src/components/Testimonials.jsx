@@ -1,13 +1,16 @@
 import { testimonials } from '../data/testimonials.js'
 import Reveal from './Reveal.jsx'
 
-function Testimonials() {
+function Testimonials({ items = testimonials }) {
   return (
     <div className="quotes">
-      {testimonials.map(({ name, quote }) => (
+      {items.map(({ name, tag, quote }) => (
         <Reveal key={name} className="quote">
           <p>&ldquo;{quote}&rdquo;</p>
-          <div className="who">{name}</div>
+          <div className="who">
+            {name}
+            {tag && <span> · {tag}</span>}
+          </div>
         </Reveal>
       ))}
     </div>

@@ -35,6 +35,7 @@ function Nav() {
           className={`nav-links${open ? ' open' : ''}`}
           onClick={() => setOpen(false)}
         >
+          <Link to="/#services">Services</Link>
           <Link to="/#blueprint">The Blueprint</Link>
           <Link to="/#work">Work with me</Link>
           <NavLink to="/kids" className={({ isActive }) => (isActive ? 'active' : undefined)}>
