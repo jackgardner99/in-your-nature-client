@@ -1,23 +1,95 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Link } from 'react-router'
 import Footer from '../components/Footer.jsx'
 import Quiz from '../components/Quiz.jsx'
 import Reveal from '../components/Reveal.jsx'
 import Testimonials from '../components/Testimonials.jsx'
+import { testimonials } from '../data/testimonials.js'
 import { FORMSPREE_ENDPOINT } from '../data/site.js'
 
-const flow = [
+const SITE_URL = 'https://getinyournature.com'
+
+const SEO_DESCRIPTION =
+  'Career coaching, confidence coaching, public speaking, and kids & teens coaching in Hendersonville and Nashville, TN, and online. Find your purpose, true calling, ideal job, and natural gifts. Book a free intro call.'
+
+const SEO_KEYWORDS =
+  'career coach near me, career coaching Nashville, confidence coach Hendersonville TN, confidence coaching near me, public speaking coach Nashville, life coach Middle Tennessee, find my purpose, true calling, ideal job, discover my gifts and talents, find my strengths, destiny, kids confidence coach near me, confidence coaching for kids, public speaking for kids and teens, reading and learning support, learning blueprint, teen coaching Nashville'
+
+const LOCAL_BUSINESS_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': ['ProfessionalService', 'LocalBusiness'],
+  '@id': `${SITE_URL}/#business`,
+  name: 'In Your Nature',
+  description:
+    'Career coaching, confidence coaching, and public speaking coaching to help you find your purpose, true calling, ideal job, and natural gifts and talents. For adults, kids, and teens. Based in Hendersonville, TN, serving Nashville and Middle Tennessee, and online.',
+  url: `${SITE_URL}/`,
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Hendersonville',
+    addressRegion: 'TN',
+    addressCountry: 'US',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 36.3048, longitude: -86.62 },
+  areaServed: [
+    { '@type': 'City', name: 'Hendersonville, TN' },
+    { '@type': 'City', name: 'Nashville, TN' },
+    { '@type': 'City', name: 'Gallatin, TN' },
+    { '@type': 'City', name: 'Goodlettsville, TN' },
+    { '@type': 'City', name: 'Mount Juliet, TN' },
+    { '@type': 'City', name: 'Madison, TN' },
+    { '@type': 'AdministrativeArea', name: 'Sumner County, TN' },
+    { '@type': 'AdministrativeArea', name: 'Middle Tennessee' },
+  ],
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceLocation: { '@type': 'Place', name: 'Online (video) coaching, available anywhere' },
+  },
+  knowsAbout: [
+    'career coaching',
+    'career coach near me',
+    'job search',
+    'finding your ideal job',
+    'finding your purpose',
+    'true calling',
+    'confidence coaching',
+    'confidence coach near me',
+    'public speaking coach',
+    'discovering your gifts and talents',
+    'kids confidence coaching',
+    'kids confidence coach near me',
+    'public speaking for kids',
+    'reading and learning support',
+    'life coach Nashville',
+  ],
+  makesOffer: [
+    'Career Coaching & Job Search',
+    'Find Your Purpose & True Calling',
+    'Confidence Coaching',
+    'Public Speaking Coaching',
+    'Kids & Teens Coaching & Learning Blueprint',
+  ].map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
+}
+
+// All five quotes show here, including the Moores' (also featured in the kids & teens band above).
+const homeTestimonials = testimonials
+
+const steps = [
   {
     title: 'We talk',
-    body: "A free, unhurried conversation. I listen for what lights you up, what wears you down, and what you're reaching for.",
+    body: "A free, unhurried call to hear what lights you up and what you're reaching for.",
   },
   {
-    title: 'We map your gifts',
-    body: "I bring together proven personality frameworks, built into my own approach, and what comes out of our live conversation. You don't end with a number or a label, you end with your real gifts, strengths, and the environments where you come alive, clearly named.",
+    title: 'You fill out the questionnaire',
+    body: "A set of honest questions that show me how you're truly wired.",
   },
   {
-    title: 'It becomes your life',
-    body: 'We put it all into your Blueprint, then adjust your days, your work, and your direction around who you actually are, so your life starts working for you instead of against you.',
+    title: 'I build your Blueprint',
+    body: 'I create your personal Blueprint, and we talk through it together.',
+  },
+  {
+    title: 'I coach you through the change',
+    body: 'We turn it into real change in your work, your confidence, and your life.',
   },
 ]
 
@@ -50,7 +122,7 @@ const services = [
   {
     key: 'for young people',
     title: 'Kids & Teens Coaching',
-    body: 'Confidence, public speaking, reading, and learning support for kids and teens, plus a parent-friendly Learning Blueprint.',
+    body: 'Confidence, public speaking, reading, and learning support for kids and teens, plus a parent-friendly Learning Blueprint that shows how your child learns best.',
     link: true,
   },
 ]
@@ -145,7 +217,7 @@ function ContactForm() {
       {/* honeypot: hidden from people, filled in by spam bots */}
       <input className="hp" type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <button type="submit" className="btn btn-solid" disabled={status === 'sending'}>
-        {status === 'sending' ? 'Sending…' : 'Submit Form'}
+        {status === 'sending' ? 'Sending…' : 'Request my free call'}
       </button>
       {status === 'sent' && (
         <p className="cdone" role="status">
@@ -168,29 +240,29 @@ function ContactForm() {
 function Home() {
   return (
     <>
-      <title>In Your Nature — coaching &amp; personal development</title>
+      <title>
+        Career &amp; Confidence Coaching in Hendersonville &amp; Nashville, TN | In Your Nature
+      </title>
+      <meta name="description" content={SEO_DESCRIPTION} />
+      <meta name="keywords" content={SEO_KEYWORDS} />
+      <meta name="geo.region" content="US-TN" />
+      <meta name="geo.placename" content="Hendersonville, Nashville, Tennessee" />
+      <link rel="canonical" href={`${SITE_URL}/`} />
+      <meta name="robots" content="index, follow" />
+      <meta property="og:type" content="website" />
       <meta
-        name="description"
-        content="Career coaching, confidence coaching, and public speaking coaching to help you find your purpose, true calling, ideal job, and natural gifts and talents. For adults, kids, and teens."
+        property="og:title"
+        content="In Your Nature | Career Coaching, Confidence &amp; Public Speaking"
       />
+      <meta
+        property="og:description"
+        content="Find your purpose, your true calling, and your ideal job. Career, confidence, and public speaking coaching for adults, kids, and teens."
+      />
+      <meta property="og:url" content={`${SITE_URL}/`} />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'ProfessionalService',
-            name: 'In Your Nature',
-            description:
-              'Career coaching, confidence coaching, and public speaking coaching to help you find your purpose, true calling, ideal job, and natural gifts and talents. For adults, kids, and teens.',
-            makesOffer: [
-              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Career Coaching & Job Search' } },
-              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Confidence Coaching' } },
-              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Public Speaking Coaching' } },
-              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Kids & Teens Coaching' } },
-            ],
-          }),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_SCHEMA) }}
       />
 
       <header className="hero">
@@ -200,18 +272,20 @@ function Home() {
         </div>
         <div className="wrap hero-in">
           <div className="hero-copy">
-            <span className="eyebrow">Coaching &amp; personal development</span>
+            <span className="eyebrow">Career &amp; confidence coaching · Public speaking · Purpose</span>
             <h1>
               You already sense there&apos;s more.
               <span className="whisper">let&apos;s find it, together.</span>
             </h1>
             <p className="lead">
-              If you feel stuck or drained, quietly sensing you&apos;re meant for more, or you just
-              need help putting your own gifts into words, you&apos;re in the right place. I help
-              you map how you&apos;re actually wired: your gifts, your natural rhythm, the
-              environments where you come alive. I know how much it matters, because finding this
-              for myself is what pulled me out of years in work that slowly emptied me, and into a
-              life that finally feels like mine.
+              If you feel stuck, low on confidence, or quietly sensing you&apos;re meant for more,
+              searching for your purpose, your true calling, or the ideal job that finally fits,
+              you&apos;re in the right place. I offer career coaching, confidence coaching, and
+              public speaking help, and underneath all of it is one thing: understanding how
+              you&apos;re actually wired. Together we name your real gifts and talents, your
+              natural rhythm, and the environments where you come alive. I know how much it
+              matters, because finding this for myself is what pulled me out of years in work that
+              slowly emptied me, and into a life that finally feels like mine.
             </p>
             <div className="hero-cta">
               <Link to="/#contact" className="btn btn-solid">
@@ -222,8 +296,12 @@ function Home() {
               </Link>
             </div>
             <p className="hero-fine">
-              Map your gifts, your rhythm, and where you belong, {' '}
+              Map your gifts, your rhythm, and where you belong,{' '}
               <b>and turn that clarity into a life that fits you.</b>
+            </p>
+            <p className="hero-fine" style={{ marginTop: 8 }}>
+              Based in <b>Hendersonville, TN</b>, serving <b>Nashville</b> and Middle Tennessee in
+              person, and anyone, anywhere online.
             </p>
             <p className="hero-proof">
               &ldquo;Kadi has a true gift for noticing people&apos;s natural strengths and helping
@@ -251,7 +329,7 @@ function Home() {
         </div>
       </section>
 
-      {/* how it works: one connected arc */}
+      {/* how it works: numbered process with arrows */}
       <section className="sec">
         <div className="wrap">
           <div className="sec-head">
@@ -264,12 +342,28 @@ function Home() {
               real life around it so it finally works for you.
             </p>
           </div>
-          <div className="flow">
-            {flow.map(({ title, body }) => (
-              <Reveal className="flow-item" key={title}>
-                <h3>{title}</h3>
-                <p>{body}</p>
-              </Reveal>
+          <div className="process">
+            {steps.map(({ title, body }, i) => (
+              <Fragment key={title}>
+                {i > 0 && (
+                  <div className="parrow" aria-hidden="true">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M4 12h15M13 6l6 6-6 6"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                )}
+                <Reveal className="pstep">
+                  <div className="pnum">{i + 1}</div>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </Reveal>
+              </Fragment>
             ))}
           </div>
         </div>
@@ -304,6 +398,10 @@ function Home() {
               </Reveal>
             ))}
           </div>
+          <p className="blue-note">
+            Not sure which fits? Start with a free intro call and we&apos;ll find the right path
+            together.
+          </p>
         </div>
       </section>
 
@@ -384,21 +482,21 @@ function Home() {
             <span className="eyebrow">Ways to work together</span>
             <h2>Two paths. The same clear start.</h2>
             <p>
-              Every path begins with understanding yourself, and the same free conversation. What
-              changes is how much support you want after that: the insight on its own, or three
-              months of coaching to live it out. Pay in full or in installments.
+              Both begin with understanding yourself, and the same free conversation. What changes
+              is how much support you want after that: just the insight to run with, or months of
+              coaching alongside it.
             </p>
           </div>
 
           <div className="tiers">
             <Reveal className="tier">
-              <div className="tier-name">The Blueprint Program</div>
+              <div className="tier-name">The Blueprint</div>
               <div className="tier-for">Know yourself</div>
               {/* <div className="tier-price">$500</div> */}
               {/* <div className="tier-pay">Paid in full</div> */}
               <p className="tier-desc">
-                A clear, personalized read on who you really are, walked through together in a
-                live session.
+                The foundation for everything after. A clear, personalized read on who you really
+                are, walked through together.
               </p>
               <ul>
                 <li>Free intro conversation first</li>
@@ -407,11 +505,11 @@ function Home() {
                 <li>Keep-forever report</li>
               </ul>
               <p className="tier-upgrade">
-                Want more support? Your Blueprint Program credits toward the Clarity Program if you upgrade
-                within 30 days.
+                For a limited time, your full Blueprint fee credits toward the Clarity Program if
+                you choose to go deeper.
               </p>
               <Link to="/#contact" className="btn btn-ghost tier-cta">
-                Book a free intro call
+                Start here
               </Link>
             </Reveal>
 
@@ -450,20 +548,11 @@ function Home() {
             </Reveal>
           </div>
 
-          <p className="tiers-note">
-            Want to go even deeper? Longer-term, more intensive coaching is available by
-            invitation for Clarity clients.
-          </p>
-
           <div className="brand-guarantee">
-            <b>My promise:</b> if you don&apos;t feel real clarity after your first session,
-            I&apos;ll add up to two more sessions at no extra cost.
+            <b>My promise, on every path:</b> I&apos;m committed to your clarity. If you don&apos;t
+            feel it after your first session, we&apos;ll keep working until you do, at no extra
+            cost. I won&apos;t leave you without what you came for.
           </div>
-
-          <p className="tiers-note">
-            Each quarter I hold a few sliding-scale spots for people who need them. Just mention
-            it on your intro call.
-          </p>
 
           <p className="tiers-note">
             Not sure which fits? Take the quiz above, or just book a free call and we&apos;ll
@@ -510,9 +599,18 @@ function Home() {
         <div className="wrap">
           <div className="sec-head">
             <span className="eyebrow">In their words</span>
-            <h2>What it&apos;s like to be coached by me.</h2>
+            <h2>What it&apos;s like to work with me.</h2>
+            <p>
+              From career clarity and confidence to kids finding their voice, here&apos;s what
+              people say.
+            </p>
           </div>
-          <Testimonials />
+          <Testimonials items={homeTestimonials} />
+          <div className="cta-center" style={{ marginTop: 34 }}>
+            <Link to="/#contact" className="btn btn-solid">
+              Ready to see yours? Book a free call
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -526,8 +624,14 @@ function Home() {
               Tell me a little about where you are and what you&apos;re hoping for. No pressure,
               no pitch, just a real conversation to see if this is a fit. I work with a limited
               number of people at a time, so we can go deep, and every path comes with my promise:
-              if you don&apos;t feel real clarity after your first session, I&apos;ll add up to
-              two more sessions at no extra cost.
+              if you don&apos;t feel real clarity after your first session, we&apos;ll keep
+              working until you do, at no extra cost.
+            </p>
+            <p style={{ marginTop: 12, fontSize: 16 }}>
+              I meet clients in person around <b>Hendersonville and Nashville, TN</b> and across
+              Middle Tennessee, and work with people everywhere over video. So whether you&apos;re
+              searching for a career coach, a confidence coach, or a kids confidence coach near
+              you, let&apos;s talk.
             </p>
           </div>
           <ContactForm />

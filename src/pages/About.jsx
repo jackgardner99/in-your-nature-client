@@ -1,6 +1,9 @@
 import { Link } from 'react-router'
 import Footer from '../components/Footer.jsx'
 import Testimonials from '../components/Testimonials.jsx'
+import { testimonials } from '../data/testimonials.js'
+
+const aboutTestimonials = testimonials.map(({ name, quote }) => ({ name, quote }))
 
 const approach = [
   {
@@ -79,7 +82,9 @@ function About() {
               instead of who I thought I had to be.
             </p>
             <p>
-              That&apos;s why I built In Your Nature. I come from a background in consulting and
+              That&apos;s why I built In Your Nature. Once I learned how I&apos;m wired to work,
+              everything got easier, and now I help both adults and kids find ways to work and
+              learn that match their gifts. I come from a background in consulting and
               coaching, helping people get clear on their vision, find work that suits them, and
               understand their own gifts. I bring warmth, honesty, and a real gift for seeing
               people, plus my own questionnaire, built from a blend of time-tested personality
@@ -125,13 +130,18 @@ function About() {
               <h3>Your Blueprint: know your gifts</h3>
               <p>A personalized read on how you&apos;re wired, your gifts, strengths, rhythm, and the work and life that genuinely fit you.</p>
             </div>
+            <div className="facet">
+              <div className="fk">optional add-on</div>
+              <h3>Dating &amp; Relationships</h3>
+              <p>Become your most grounded, confident self, the version that draws in the right partner, with practical dating support along the way.</p>
+            </div>
           </div>
           <div className="facet-subhead">For kids &amp; teens</div>
           <div className="facets">
             <div className="facet">
               <div className="fk">confidence</div>
               <h3>Public speaking for kids</h3>
-              <p>I help children who freeze up or feel insecure find their voice and speak with real confidence.</p>
+              <p>I help children who freeze up or feel insecure find their voice and speak with real confidence, in class, in a group, and beyond.</p>
             </div>
             <div className="facet">
               <div className="fk">reading</div>
@@ -144,16 +154,16 @@ function About() {
               <p>I work with kids and adults on public speaking, including gentle, practical methods that help reduce a stutter.</p>
             </div>
             <div className="facet">
+              <div className="fk">language</div>
+              <h3>Learning English</h3>
+              <p>I help kids learn English, both native speakers building their skills and non-English speakers finding their footing.</p>
+            </div>
+            <div className="facet">
               <div className="fk">joy</div>
               <h3>Fun ways to learn</h3>
               <p>Most of all, I find playful, genuinely fun ways to learn, so progress feels good instead of like a chore.</p>
             </div>
           </div>
-          <p className="cta-center">
-            <Link to="/kids" className="btn btn-ghost">
-              Explore kids &amp; teens coaching
-            </Link>
-          </p>
         </div>
       </section>
 
@@ -181,8 +191,9 @@ function About() {
             <span className="eyebrow">In their words</span>
             <h2>What people say.</h2>
           </div>
-          <Testimonials />
-          <div className="cta-center">
+          {/* About shows all five quotes, names only (no tags), per the design file. */}
+          <Testimonials items={aboutTestimonials} />
+          <div className="cta-center" style={{ marginTop: 40 }}>
             <Link to="/#contact" className="btn btn-solid">
               Book a free intro call
             </Link>
@@ -190,8 +201,8 @@ function About() {
         </div>
       </section>
 
-      <Footer heading="Let's find out what's in your nature.">
-        Start with a free, no-pressure conversation — and see what becomes clear.
+      <Footer heading="Let's find out what's in your nature." area={null}>
+        Start with a free, no-pressure conversation, and see what becomes clear.
       </Footer>
     </>
   )
